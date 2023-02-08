@@ -1,5 +1,5 @@
 <template>
-    <router-link to="/home">home</router-link>
+    <router-link to="/">home</router-link>
     <router-link to="/about">about</router-link>
     <router-link to="/contacts">contacts</router-link>
 
