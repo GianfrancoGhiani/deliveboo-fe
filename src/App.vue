@@ -2,14 +2,11 @@
   <header>
     <HeaderComponent />
   </header>
-  App Vue
   <div>
     <router-view></router-view>
   </div>
 
   <FooterComponent />
-  ciao
-
 </template>
 
 <script>
