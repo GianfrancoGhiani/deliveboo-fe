@@ -5,9 +5,9 @@
 </template>
 
 <script>
-    export default {
-        name: FooterComponent,
-    }
+export default {
+    name: "FooterComponent",
+}
 </script>
 
 <style lang="scss" scoped>
