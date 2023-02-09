@@ -1,10 +1,10 @@
 <template>
-    <h2 class="text-center mt-4">Choose between our partner brand</h2>
-    <carousel :itemsToShow="5" :wrapAround="true" :transition="1000" :autoplay="1500">
+    <h2 class="text-center mt-4">Some of the brand that choose us</h2>
+    <carousel :itemsToShow="8" :wrapAround="true" :transition="1000" :autoplay="1500">
         <slide v-for="(slide, index) in homePaths" :key="index">
             <div class="mt-2">
                 <img class="carousel__item" :src="slide.path" :alt="slide.alt">
-                <h3 class="text-white pt-2 text-center">{{ slide.info }}<span class="dot">.</span></h3>
+                <!--<h3 class="text-white pt-2 text-center">{{ slide.info }}<span class="dot">.</span></h3>-->
             </div>
         </slide>
 
@@ -33,30 +33,120 @@ export default {
 
             homePaths: [
                 {
-                    path: 'img/jumbo-1.jpg',
+                    path: 'img/logos/100-montaditos.png',
                     alt: 'moisturizer',
                     info: 'cream',
                     id: 1,
                 },
                 {
-                    path: 'img/jumbo-2.jpg',
+                    path: 'img/logos/Burger-King.png',
                     alt: 'makeup',
                     info: 'makeup',
                     id: 2,
                 },
                 {
-                    path: 'img/jumbo-3.jpg',
+                    path: 'img/logos/Coca-Cola.png',
                     alt: 'eyeshadow',
                     info: 'brushes',
                     id: 3,
                 },
                 {
-                    path: 'img/jumbo-4.jpg',
+                    path: 'img/logos/Costa-Cafe.png',
                     alt: 'eyeliner',
                     info: 'eyeliner',
                     id: 4,
                 },
-            ]
+                {
+                    path: 'img/logos/dominos.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 5,
+                },
+                {
+                    path: 'img/logos/eatily.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 6,
+                },
+                {
+                    path: 'img/logos/Fanta.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 7,
+                },
+                {
+                    path: 'img/logos/Goiko.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 8,
+                },
+                {
+                    path: 'img/logos/honest-green.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 9,
+                },
+                {
+                    path: 'img/logos/kebab.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 10,
+                },
+                {
+                    path: 'img/logos/kfc.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 11,
+                },
+                {
+                    path: 'img/logos/La-tagliatella.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 12,
+                },
+                {
+                    path: 'img/logos/Mc-Donald.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 13,
+                },
+                {
+                    path: 'img/logos/Old-Wild-West.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 14,
+                },
+                {
+                    path: 'img/logos/pepsi.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 15,
+                },
+                {
+                    path: 'img/logos/pizza-hut.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 16,
+                },
+                {
+                    path: 'img/logos/starbucks.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 17,
+                },
+                {
+                    path: 'img/logos/Sushi-Bar.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 18,
+                },
+                {
+                    path: 'img/logos/vicio.png',
+                    alt: 'eyeliner',
+                    info: 'eyeliner',
+                    id: 19,
+                },
+            ],
         }
     }
 }
@@ -112,6 +202,6 @@ export default {
 }
 
 img {
-    width: 200px;
+    width: 100px;
 }
 </style>

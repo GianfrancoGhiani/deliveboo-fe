@@ -30,27 +30,28 @@ export default {
     data: function () {
         return {
 
+           
             homePaths: [
                 {
-                    path: 'img/jumbo-1.jpg',
+                    path: 'img/jumbo/jumbo-1.jpg',
                     alt: 'moisturizer',
                     info: 'cream',
                     id: 1,
                 },
                 {
-                    path: 'img/jumbo-2.jpg',
+                    path: 'img/jumbo/jumbo-2.jpg',
                     alt: 'makeup',
                     info: 'makeup',
                     id: 2,
                 },
                 {
-                    path: 'img/jumbo-3.jpg',
+                    path: 'img/jumbo/jumbo-3.jpg',
                     alt: 'eyeshadow',
                     info: 'brushes',
                     id: 3,
                 },
                 {
-                    path: 'img/jumbo-4.jpg',
+                    path: 'img/jumbo/jumbo-4.jpg',
                     alt: 'eyeliner',
                     info: 'eyeliner',
                     id: 4,
