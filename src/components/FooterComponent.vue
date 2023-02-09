@@ -56,19 +56,10 @@
         <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 text-white">
           <!-- Links -->
           <h6 class="text-uppercase fw-bold mb-4">
-            Products
+            Pages
           </h6>
-          <p>
-            <a href="#!" class="text-reset">Angular</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">React</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Vue</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Laravel</a>
+          <p v-for="(i, index) in menuPage" :key="index">
+            <a :href="i.url" class="text-reset">{{ i.info }}</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -79,17 +70,8 @@
           <h6 class="text-uppercase fw-bold mb-4">
             Useful links
           </h6>
-          <p>
-            <a href="#!" class="text-reset">Pricing</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Settings</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Orders</a>
-          </p>
-          <p>
-            <a href="#!" class="text-reset">Help</a>
+          <p v-for="(i, index) in foodCategory" :key="index">
+            <a :href="i.url" class="text-reset">{{ i.info }}</a>
           </p>
         </div>
         <!-- Grid column -->
@@ -101,7 +83,7 @@
           <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
           <p>
             <i class="fas fa-envelope me-3"></i>
-            info@example.com
+            info@deliveboo.com
           </p>
           <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
           <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
@@ -126,6 +108,46 @@
 <script>
 export default {
     name: "FooterComponent",
+    data: function () {
+        return {
+            menuPage: [
+                {
+                    url: '/',
+                    info: 'home',
+                    id: 1,
+                },
+                {
+                    url: '/about',
+                    info: 'about',
+                    id: 2,
+                },
+                {
+                    url: '/contacts',
+                    info: 'contacts',
+                    id: 3,
+                },
+            ],
+
+            foodCategory: [
+                {
+                    url: '/',
+                    info: 'Condition of use',
+                    id: 1,
+                },
+                {
+                    url: '/',
+                    info: 'Privacy Policy',
+                    id: 2,
+                },
+                {
+                    url: '/',
+                    info: 'Cookies Policy',
+                    id: 3,
+                },
+            ]
+
+        }
+    }
 }
 </script>
 
