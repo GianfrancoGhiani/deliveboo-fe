@@ -99,7 +99,6 @@
 .parallax {
     background-image: url('public/img/logos/dominos.png');
     height: 100%;
-
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -108,9 +107,6 @@
 section {
     padding: 100px;
 
-    .container{
-        width: 100vw;
-    }
     .cards-container{
     display: flex;
     flex-wrap: wrap;
