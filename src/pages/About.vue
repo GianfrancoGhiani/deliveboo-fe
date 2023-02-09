@@ -64,14 +64,14 @@
                         image: 'https://avatars.githubusercontent.com/u/98409091?v=4',
                         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempora enim pariatur saepe illo impedit?',
                         qualification:'Full Stack Developer',
-                        github: 'https://github.com/search?q=BarrioTropica',
+                        github: 'https://github.com/BarrioTropical',
                     },
                     {
                         name: 'Mattia',
                         image: 'https://avatars.githubusercontent.com/u/54687718?v=4',
                         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempora enim pariatur saepe illo impedit?',
                         qualification:'Full Stack Developer',
-                        github: 'https://github.com/Mattiarollo',
+                        github: 'https://github.com/Mattia-rollo',
                     },
                     {
                         name: 'Riccardo',
