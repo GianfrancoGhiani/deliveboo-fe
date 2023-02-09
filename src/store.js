@@ -5,7 +5,7 @@ export const store = reactive({
     imagBasePath: 'http://127.0.0.1:8000/storage/',
     productsArray: [],
     isLoading: false,
-    openCart: true,
+    openCart: false,
     shoppingCart: [],
     cartData: [
         {
