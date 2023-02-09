@@ -1,6 +1,8 @@
 <template>
     <div class="parallax">
         <section class="container">
+            <h1 class="text-center">Meet Our Team</h1>
+
             <!-- cards container  -->
             <div class="cards-container">
                 <!--  card -->
@@ -97,7 +99,7 @@
 @use './../assets/styles/partials/variables' as *;
 
 .parallax {
-    background-image: url('public/img/logos/dominos.png');
+    //background-image: url('public/img/logos/dominos.png');
     height: 100%;
     background-attachment: fixed;
     background-position: center;
@@ -105,7 +107,7 @@
     background-size: cover;
 }
 section {
-    padding: 100px;
+    padding: 30px;
 
     .cards-container{
     display: flex;
@@ -116,7 +118,7 @@ section {
             width: 85%;
             margin: 25px auto;
             background: transparent;
-            color: pink;
+            color: $orange;
             cursor: pointer;
             border-radius: 0;
             transition: 0.3s;
@@ -134,7 +136,7 @@ section {
                 height: 100%;
                 transition: transform 1s;
                 transform-style: preserve-3d;
-                border: 2px solid pink;
+                border: 2px solid;
                 .front {
                     padding: 25px 0px;
                     // box-shadow: 8px 8px 10px rgba(62, 62, 62, 0.76);
@@ -142,7 +144,8 @@ section {
                     .img-profile{
                         width: 68%;
                         height: 100%;
-                        border: 2px solid pink;
+                        border-radius: 50%;
+                        //border: 2px solid $orange;
                     }
 
                     .card-body{
@@ -154,8 +157,8 @@ section {
                             
                             .profile-name {
                                 display: block;
-                                font-size: 40px;
-                                font-weight: bold;
+                                font-size: 30px;
+                                font-weight: medium;
                                 letter-spacing: 0.8px;
                                 text-transform: uppercase;
                             }
@@ -163,7 +166,7 @@ section {
                                 display: block;
                                 font-size: 20px;
                                 font-weight: bold;
-                                color: pink;
+                                color: $orange;
                                 letter-spacing: 0.8px;
                             }
                             .profile-description{
@@ -178,12 +181,12 @@ section {
 
                             a {
                                 i {
-                                    color: pink;
+                                    color: $orange;
                                     margin-right: 10px;
                                     transition: all 0.5s;
 
                                     &:hover{
-                                        color: pink;
+                                        color: $orange;
                                         scale: 1.2;
                                     } 
                                 } 
@@ -197,7 +200,7 @@ section {
                 position: absolute;
                 height: 100%;
                 width: 100%;
-                background: white;
+                background: $dark-gray;
                 -webkit-backface-visibility: hidden;
                 backface-visibility: hidden;
 
@@ -207,12 +210,12 @@ section {
 
                             a {
                                 i {
-                                    color: pink;
+                                    color: $orange;
                                     margin-right: 10px;
                                     transition: all 0.5s;
 
                                     &:hover{
-                                        color: pink;
+                                        color: $orange;
                                         scale: 1.2;
                                     } 
                                 } 
@@ -222,8 +225,8 @@ section {
 
                 .back {
                     padding: 25px 30px;
-                    background: white;
-                    color: pink;
+                    background: black;
+                    color: $orange;
                     text-align: center;
                     transform: rotateY( 180deg );
                     // box-shadow: 8px 8px 10px rgba(62, 62, 62, 0.76);
@@ -268,8 +271,8 @@ section {
     section {
         .cards-container {
                 .single-card{
-                width: calc(100% / 3 - 56px);
-                margin: 50px 28px;
+                width: calc(100% / 4 - 56px);
+                margin: 50px 18px;
             }
         }
     }   
