@@ -13,7 +13,7 @@
         
       </ul>
       <span class="navbar-text">
-        <a class="nav-link active text-white" aria-current="page" href="http://127.0.0.1:8000/login">login</a>
+        <a class="nav-link active text-white" aria-current="page" href="http://127.0.0.1:8000/login" target="_blank">login</a>
 
       </span>
     </div>

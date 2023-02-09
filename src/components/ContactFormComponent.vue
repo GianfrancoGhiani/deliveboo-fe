@@ -4,14 +4,13 @@
             <div class="container-fluid text-center">
 
 
-                <!-- <h2 class="text-uppercase text-white fw-bold mb-5"><img class="logo-w me-3"
-                        src="../../public/img/logo.png" alt="">contact
-                    us...</h2> -->
+                <h1 class="text-uppercase text-white fw-bold m-5">contact us</h1> 
+                <h4>Questions? Contact now our support team and we'll answer you as soon as possible</h4>
                 <div v-if="success" class="alert alert-success text-start" role="alert">
                     The message has been successfully sent!
                 </div>
                 <div class="d-flex justify-content-center">
-                    <div class="row w-50">
+                    <div class="row w-50 m-5">
                         <form class="col-12 text-start" @submit.prevent="sendForm()">
                             <div class="mb-4">
                                 <input class="border border-light text-white bg-transparent form-control" type="text"
@@ -130,18 +129,18 @@ export default {
     transition: 0.3s;
 
 
-    &:after {
-        position: absolute;
-        content: "";
-        width: 0;
-        height: 100%;
-        top: 0;
-        left: 0;
-        direction: rtl;
-        z-index: -1;
-        background: $orange;
-        transition: all 0.3s ease;
-    }
+    // &:after {
+    //     position: absolute;
+    //     content: "";
+    //     width: 0;
+    //     height: 100%;
+    //     top: 0;
+    //     left: 0;
+    //     direction: rtl;
+    //     z-index: -1;
+    //     background: $orange;
+    //     transition: all 0.3s ease;
+    // }
 
     &:hover {
         font-weight: 900;
