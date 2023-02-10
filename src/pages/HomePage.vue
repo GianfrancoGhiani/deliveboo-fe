@@ -5,12 +5,19 @@
     <div class="container mt-5 mb-5">
         <CarouselComponent></CarouselComponent>
         <CarouselBrandComponent></CarouselBrandComponent>
-        <CardComponent></CardComponent>
+        <div v-if="restaurants" class="row row-cols-3">
+
+            <div class="col" v-for="restaurant in restaurants">
+                <CardComponent :restaurant="restaurant"></CardComponent>
+            </div>
+        </div>
         <ReviewCarousel></ReviewCarousel>
     </div>
 </template>
 
 <script>
+import axios from 'axios';
+import { store } from '../store';
 import CarouselComponent from '../components/CarouselComponent.vue';
 import JumboComponent from '../components/JumboComponent.vue';
 import CarouselBrandComponent from '../components/CarouselBrandComponent.vue';
@@ -24,6 +31,23 @@ export default {
         CarouselBrandComponent,
         CardComponent,
         ReviewCarousel,
+    },
+    data() {
+        return {
+            store,
+            restaurants: [],
+        }
+    },
+    methods: {
+        getRestaurant() {
+            axios.get(`${this.store.apiBaseUrl}/restaurants`).then((response) => {
+                this.restaurants = response.data.results;
+                console.log(response)
+            });
+        },
+    },
+    mounted() {
+        this.getRestaurant();
     }
 }
 </script>
