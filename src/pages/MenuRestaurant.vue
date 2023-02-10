@@ -1,5 +1,6 @@
 <template>
 <div class="container">
+    <h1 class="py-5 text-center ">What do you want to eat?</h1>
 <div class="row row-cols-4">
         <MenuCardComponent v-for="product in products" :product="product" ></MenuCardComponent>
     </div>
@@ -37,5 +38,9 @@ import { store } from '../store';
 </script>
 
 <style lang="scss" scoped>
+@use './../assets/styles/partials/variables' as *;
 
+h1{
+    color: $orange;
+}
 </style>

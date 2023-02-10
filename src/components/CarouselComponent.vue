@@ -1,5 +1,5 @@
 <template>
-    <carousel :itemsToShow="1" :wrapAround="true" :transition="1000" :autoplay="1500">
+    <carousel :itemsToShow="1" :wrapAround="true" :transition="3000" :autoplay="1500">
         <slide v-for="(slide, index) in homePaths" :key="index">
             <div class="">
                 <img class="carousel__item" :src="slide.path" :alt="slide.alt">
@@ -35,27 +35,27 @@ export default {
                 {
                     path: 'img/jumbo/jumbo-1.jpg',
                     alt: 'moisturizer',
-                    info: 'cream',
+                    info: 'Order',
                     id: 1,
                 },
                 {
                     path: 'img/jumbo/jumbo-2.jpg',
                     alt: 'makeup',
-                    info: 'makeup',
+                    info: 'Food',
                     id: 2,
                 },
                 {
                     path: 'img/jumbo/jumbo-3.jpg',
                     alt: 'eyeshadow',
-                    info: 'brushes',
+                    info: 'Deliver',
                     id: 3,
                 },
-                {
-                    path: 'img/jumbo/jumbo-4.jpg',
-                    alt: 'eyeliner',
-                    info: 'eyeliner',
-                    id: 4,
-                },
+                // {
+                //     path: 'img/jumbo/jumbo-4.jpg',
+                //     alt: 'eyeliner',
+                //     info: '',
+                //     id: 4,
+                // },
             ]
         }
     }

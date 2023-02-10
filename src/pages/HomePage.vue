@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
+    
         <JumboComponent></JumboComponent>
-    </div>
+   
     <div class="container mt-5 mb-5">
         <CarouselComponent></CarouselComponent>
         <CarouselBrandComponent></CarouselBrandComponent>
