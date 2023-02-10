@@ -7,7 +7,7 @@
         <CarouselBrandComponent></CarouselBrandComponent>
         <div v-if="restaurants" class="row row-cols-3">
 
-            <div class="col" v-for="restaurant in restaurants">
+            <div class="col" v-for="restaurant in restaurants" @click="">
                 <CardComponent :restaurant="restaurant"></CardComponent>
             </div>
         </div>
@@ -45,6 +45,9 @@ export default {
                 console.log(response)
             });
         },
+        showRestaurant(restaurant){
+            this.selectedRestaurant = restaurant;
+        }
     },
     mounted() {
         this.getRestaurant();

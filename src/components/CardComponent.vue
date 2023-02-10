@@ -9,7 +9,9 @@
   </div>
 </div> -->
   <div class="py-1">
+    <router-link :to="{name:'menu', params:{id:restaurant.id, slug:restaurant.slug}}">
     <div class="wrap">
+    
       <div class="tile">
         <img :src="`${store.imagBasePath}${restaurant.image_url}`" />
         <div class="text">
@@ -19,7 +21,9 @@
           <p v-for="(type,index) in restaurant.types"  class="animate-text text-capitalize">{{ type.name }}</p>
         </div>
       </div>
+      
     </div>
+  </router-link>
   </div>
 
 </template>
