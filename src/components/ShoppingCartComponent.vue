@@ -1,6 +1,6 @@
 <template>
   <div class="shopping_cart">
-    <div class="mk_container">
+    <div class="container">
       <div class="py-2 fs-3 text-end" @click="store.openCart = !store.openCart">
         <i class="fa-solid fa-circle-xmark"></i>
       </div>
@@ -16,6 +16,10 @@
           </div>
           <span @click="removeFromCart()"><i class="fa-solid fa-trash"></i></span>
         </div>
+      </div>
+      <div class="cart_total mt-4 d-flex justify-content-between me-auto">
+        <span class="fs-4">Total:</span>
+        <span class="fs-4">{{ this.cartTotal.toFixed(2) }}</span>
       </div>
       <div class="cart_total mt-4 d-flex justify-content-between me-auto">
         <span class="fs-4">Total:</span>
@@ -43,6 +47,7 @@ export default {
   computed: {
     cartTotal() {
       return store.cartData.reduce((a, b) => a + b.price * b.quantity, 0);
+      // return store.cartData[0].cartTotal;
     },
   },
   mounted() {

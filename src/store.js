@@ -7,14 +7,29 @@ export const store = reactive({
     isLoading: false,
     openCart: false,
     shoppingCart: [],
+    order: {
+        customer_firstname: "Mario",
+        customer_lastname: "Rossi",
+        customer_email: "mariorossi@gmail.it",
+        customer_address: "via roma 100",
+        customer_tel: "357847523",
+        description: "Pizza buona, focaccia così, pizza all'ananas, pasta con il ketchap",
+        paid: 0,
+        cartTotal: 50,
+        restaurant_id: 1,
+        cart: this.cartData.map((item) => item.product )
+    },
     cartData: [
         {
-            name: 'prodotto 1',
-            price_sign: '$',
-            price: 12,
-            quantity: 10,
-            cartTotal: '50'
-        }
+            product: 1,
+            quantity: 1,
+            price: 12  
+        },
+        {
+            product: 2,
+            quantity: 1,
+            price: 5  
+        },
     ],
 
     menuItems: [
