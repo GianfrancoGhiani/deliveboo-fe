@@ -1,17 +1,19 @@
 <template>
-    <h2 class="text-center mt-4">Some of the brand that choose us</h2>
-    <carousel :itemsToShow="8" :wrapAround="true" :transition="1000" :autoplay="1500">
-        <slide v-for="(slide, index) in homePaths" :key="index">
-            <div class="mt-2">
-                <img class="carousel__item" :src="slide.path" :alt="slide.alt">
-                <!--<h3 class="text-white pt-2 text-center">{{ slide.info }}<span class="dot">.</span></h3>-->
-            </div>
-        </slide>
+    <div class="py-5">
+        <h2 class="text-center mt-4">Some of the brand that choose us</h2>
+        <carousel :itemsToShow="8" :wrapAround="true" :transition="1000" :autoplay="1500">
+            <slide v-for="(slide, index) in homePaths" :key="index">
+                <div class="mt-2">
+                    <img class="carousel__item" :src="slide.path" :alt="slide.alt">
+                    <!--<h3 class="text-white pt-2 text-center">{{ slide.info }}<span class="dot">.</span></h3>-->
+                </div>
+            </slide>
 
-        <template #addons>
-            <navigation />
-        </template>
-    </carousel>
+            <template #addons>
+                <navigation />
+            </template>
+        </carousel>
+    </div>
 </template>
 
 <script>
@@ -157,10 +159,11 @@ export default {
 @import "../../node_modules/vue3-carousel/dist/carousel.css";
 
 
-.dot{
+.dot {
     font-size: 30px;
-    
+
 }
+
 .carousel__slide {
     padding: 5px;
 }
@@ -203,5 +206,9 @@ export default {
 
 img {
     width: 100px;
+}
+
+h2{
+    color: $orange;
 }
 </style>

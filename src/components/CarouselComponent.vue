@@ -3,7 +3,7 @@
         <slide v-for="(slide, index) in homePaths" :key="index">
             <div class="">
                 <img class="carousel__item" :src="slide.path" :alt="slide.alt">
-                <h3 class="text-white pt-2 text-center">{{ slide.info }}<span class="dot">.</span></h3>
+                <h3 class="text-white pt-2 text-center text-capitalize">{{ slide.info }}<span class="dot">.</span></h3>
             </div>
         </slide>
 
@@ -113,5 +113,8 @@ export default {
 
 img {
     width: 500px;
+}
+h3{
+    color: $orange!important;
 }
 </style>
