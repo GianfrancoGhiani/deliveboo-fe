@@ -41,11 +41,7 @@ export default {
   background-color: black;
   height: 500px;
   overflow-y: hidden;
-  &:hover{
-  box-shadow: 0px 35px 77px -17px rgba(0, 0, 0, 0.64);
-  transform: scale(1.05);
-  transition: all 1s ease-out;
-  }
+ 
 
 
   .card-text {
