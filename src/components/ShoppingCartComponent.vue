@@ -6,24 +6,29 @@
       </div>
       <h6>Shopping Cart</h6>
       <div class="product_list mt-5">
-        <div class="cart_item d-flex py-3 justify-content-between align-items-center"
-          v-for="(cartItem, index) in store.cartData" :key="index">
-          <div>
-            <p>{{ cartItem.name }}</p>
-            <p>{{ cartItem.price_sign }}{{ cartItem.price }}</p>
-            <input type="number" class="w-25 me-2" v-model="cartItem.quantity" min="1" />
-            <label for="quantity">Quantity</label>
-          </div>
-          <span @click="removeFromCart()"><i class="fa-solid fa-trash"></i></span>
+        <div class="cart_item d-flex py-3 align-items-center" v-for="(cartItem, index) in store.cartData"
+          :key="cartItem.id" @change="store.updateCart()">
+
+          <div class="me-2">id: {{ cartItem.product }}</div>
+          <div class="me-auto">$ {{ cartItem.price.toFixed(2) }}</div>
+
+
+
+          <label for="quantity" class="me-3">Quantity</label>
+          <input type="number" id="quantity" class="me-3" style="width: 3rem" v-model="cartItem.quantity" min="1" />
+
+
+
+
+          <span @click="removeFromCart(index)"><i class="fa-solid fa-trash"></i></span>
         </div>
       </div>
-      <div class="cart_total mt-4 d-flex justify-content-between me-auto">
+      <div class="cart_total d-flex justify-content-between me-auto">
         <span class="fs-4">Total:</span>
-        <span class="fs-4">{{ this.cartTotal.toFixed(2) }}</span>
+        <span class="fs-4" v-if="store.cartData">{{ this.cartTotal.toFixed(2) }}</span>
       </div>
-      <div class="cart_total mt-4 d-flex justify-content-between me-auto">
-        <span class="fs-4">Total:</span>
-        <span class="fs-4">{{ this.cartTotal.toFixed(2) }}</span>
+      <div class="cart_total mt-2 d-flex justify-content-between me-auto">
+        <button class="btn btn-primary" @click="invia()">Invia Ordine</button>
       </div>
     </div>
   </div>
@@ -44,9 +49,9 @@ export default {
         customer_tel: "357847523",
         description: "Pizza buona, focaccia così, pizza all'ananas, pasta con il ketchap",
         paid: 0,
-        cartTotal: 50,
+        cartTotal: 0,
         restaurant_id: 1,
-        cart: store.cartData.map((item) => item.product)
+        cart: store.cartData
       },
     };
   },
@@ -55,14 +60,26 @@ export default {
       store.cartData.splice(index, 1);
       localStorage.setItem(`cart`, JSON.stringify(store.cartData));
     },
+    invia() {
+      console.log(this.order);
+    }
   },
   computed: {
+
     cartTotal() {
-      return store.cartData.reduce((a, b) => a + b.price * b.quantity, 0);
+      if (store.cartData) {
+
+        return store.cartData.reduce((a, b) => a + b.price * b.quantity, 0);
+
+      } else {
+        return
+      }
       // return store.cartData[0].cartTotal;
     },
   },
   mounted() {
+
+
 
   }
 };
@@ -74,7 +91,7 @@ export default {
 
 .product_list {
   overflow-y: auto;
-  height: 70vh;
+  height: 70%;
 }
 
 .cart_item {

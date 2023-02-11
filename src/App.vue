@@ -6,10 +6,10 @@
     <router-view></router-view>
   </div>
   <div class="aside_menu_shop">
-    <i class="fa-brands fa-opencart" @click="store.openCart = true"></i>
+    <i class="fa-brands fa-opencart" @click="store.openCart = !store.openCart"></i>
     <Transition class="cart_animation">
-      <div class="cart_counter" v-if="store.cartData.length > 0">
-        <span>{{ store.cartData.length }}</span>
+      <div class="cart_counter" v-if="store.cartData">
+        <span>{{ totalItems() }}</span>
       </div>
     </Transition>
   </div>
@@ -37,7 +37,28 @@ export default {
     return {
       store
     }
-  }
+  },
+  mounted() {
+
+    if (localStorage.getItem('cart')) {
+
+      const cartData = localStorage.getItem('cart');
+      store.cartData = JSON.parse(cartData);
+
+    } else {
+
+      localStorage.setItem('cart', JSON.stringify(store.cartData));
+
+    }
+    // const data = localStorage.getItem('cart');
+    // store.cartData = JSON.parse(data);
+  },
+  methods: {
+    totalItems() {
+      return store.cartData.reduce((a, b) => a + b.quantity, 0);
+    }
+  },
+
 }
 </script>
 
@@ -72,6 +93,7 @@ export default {
   transform: translateX(550px);
   // opacity: 0;
 }
+
 .aside_menu_shop {
   position: fixed;
   top: 6.5rem;
@@ -93,6 +115,7 @@ export default {
     padding-right: 1.5rem;
   }
 }
+
 .cart_counter {
   width: 30px;
   height: 30px;
@@ -106,5 +129,4 @@ export default {
   bottom: -15px;
   left: -15px;
 }
-
 </style>

@@ -7,6 +7,10 @@ export const store = reactive({
     isLoading: false,
     openCart: false,
     shoppingCart: [],
+    
+    updateCart() {
+        localStorage.setItem(`cart`, JSON.stringify(store.cartData));
+      },
     cartData: [
         {
             product: 1,
@@ -19,6 +23,7 @@ export const store = reactive({
             price: 5  
         },
     ],
+    
     
    
 
