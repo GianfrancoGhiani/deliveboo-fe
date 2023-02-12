@@ -14,7 +14,7 @@
 
 
 
-          <label for="quantity" class="me-3">Quantity</label>
+          <label for="quantity" class="me-2">X</label>
           <input type="number" id="quantity" class="me-3" style="width: 3rem" v-model="cartItem.quantity" min="1" />
 
 
@@ -24,9 +24,13 @@
         </div>
       </div>
       <div class="cart_total d-flex justify-content-between me-auto">
+
         <span class="fs-4">Total:</span>
+
         <span class="fs-4" v-if="store.cartData">{{ this.cartTotal.toFixed(2) }}</span>
+
       </div>
+
       <div class="cart_total mt-2 d-flex justify-content-between me-auto">
         <button class="btn btn-primary" @click="invia()">Invia Ordine</button>
       </div>
@@ -61,20 +65,19 @@ export default {
       localStorage.setItem(`cart`, JSON.stringify(store.cartData));
     },
     invia() {
-      console.log(this.order);
+      axios
+        .post(`${store.apiBaseUrl}/orders/${this.$route.params.slug}`)
+        .then((res) => {
+
+        });
     }
   },
   computed: {
 
     cartTotal() {
-      if (store.cartData) {
 
-        return store.cartData.reduce((a, b) => a + b.price * b.quantity, 0);
+      return store.cartData ? store.cartData.reduce((a, b) => a + b.price * b.quantity, 0) : 0
 
-      } else {
-        return
-      }
-      // return store.cartData[0].cartTotal;
     },
   },
   mounted() {
@@ -83,6 +86,7 @@ export default {
 
   }
 };
+
 </script>
 
 <style lang="scss" scoped>
