@@ -7,16 +7,20 @@
     <a href="#" class="btn btn-primary">Order it</a>
   </div>
 </div>  -->
-<router-link :to="{ name: 'show',params:{id:product.id,slug: product.slug}}">
+
   <div class="card cardMenu border-warning m-3 pt-2" style="width: 18rem;">
-    <img class="card-img-top" :src="`${store.imagBasePath}${product.image_url}`" alt="Card image cap">
+    <router-link :to="{ name: 'show', params: { id: product.id, slug: product.slug } }">
+      <img class="card-img-top" :src="`${store.imagBasePath}${product.image_url}`" alt="Card image cap">
+    </router-link>
     <div class="card-body">
-      <h5 class="card-title">{{ product.name }}</h5>
-      <p class="card-text text-capitalize">{{ product.ingredients }}</p>
+      <h5 class="card-title">{{ truncateContent(product.name) }}</h5>
+      <p class="card-text text-capitalize mt-3">{{ product.ingredients }}</p>
+      <p class="prezzo">${{ product.price }}</p>
     </div>
+
     <a href="#" class="btn mybtn" @click="addtoCart()"><b>Order it</b> </a>
   </div>
-</router-link>
+
 </template>
 
 <script>
@@ -27,9 +31,10 @@ export default {
     return {
       store,
       singleProduct: this.product,
+      contentMaxLen: 15,
     }
   },
-  methods:{
+  methods: {
     addtoCart() {
       let defaultquantity = 1;
       let cartItem = store.cartData.find(i => i.id === this.singleProduct.id);
@@ -44,6 +49,12 @@ export default {
       localStorage.setItem('cart', JSON.stringify(store.cartData));
       console.log(store.shoppingCart, store.cartData);
     },
+    truncateContent(text) {
+            if (text.length > this.contentMaxLen) {
+                return text.substr(0, this.contentMaxLen) + "...";
+            }
+            return text;
+        },
   },
 
   props: ['product'],
@@ -68,7 +79,10 @@ export default {
   }
 
 }
-
+.card-img-top{
+  width: 100%;
+  height: 220px;
+}
 .mybtn {
   background-color: #EBB825;
 
@@ -81,16 +95,14 @@ h5 {
   color: $orange;
 }
 
-.prezzo{
+.prezzo {
   position: absolute;
-  top: 10px;
-  left: 0;
+  top: 8px;
+  left: 10px;
   color: $orange;
   background-color: rgba(0, 0, 0, 0.445);
   font-weight: 600;
   border-radius: 8px;
   padding: 0 5px;
 }
-
-
 </style>
