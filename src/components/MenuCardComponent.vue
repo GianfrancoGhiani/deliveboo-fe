@@ -7,20 +7,20 @@
     <a href="#" class="btn btn-primary">Order it</a>
   </div>
 </div>  -->
+  <div class="containter-sm">
+    <div class="card cardMenu border-warning mt-4 p-2">
+      <router-link :to="{ name: 'show', params: { id: product.id, slug: product.slug } }">
+        <img class="card-img-top" :src="`${store.imagBasePath}${product.image_url}`" alt="Card image cap">
+      </router-link>
+      <div class="card-body">
+        <h5 class="card-title">{{ truncateContent(product.name) }}</h5>
+        <p class="card-text text-capitalize mt-3">{{ product.ingredients }}</p>
+        <p class="prezzo">${{ product.price }}</p>
+      </div>
 
-  <div class="card cardMenu border-warning m-3 pt-2" style="width: 18rem;">
-    <router-link :to="{ name: 'show', params: { id: product.id, slug: product.slug } }">
-      <img class="card-img-top" :src="`${store.imagBasePath}${product.image_url}`" alt="Card image cap">
-    </router-link>
-    <div class="card-body">
-      <h5 class="card-title">{{ truncateContent(product.name) }}</h5>
-      <p class="card-text text-capitalize mt-3">{{ product.ingredients }}</p>
-      <p class="prezzo">${{ product.price }}</p>
+      <a href="#" class="btn mybtn" @click="addtoCart()"><b>Order it</b> </a>
     </div>
-
-    <a href="#" class="btn mybtn" @click="addtoCart()"><b>Order it</b> </a>
   </div>
-
 </template>
 
 <script>
@@ -50,11 +50,11 @@ export default {
       console.log(store.shoppingCart, store.cartData);
     },
     truncateContent(text) {
-            if (text.length > this.contentMaxLen) {
-                return text.substr(0, this.contentMaxLen) + "...";
-            }
-            return text;
-        },
+      if (text.length > this.contentMaxLen) {
+        return text.substr(0, this.contentMaxLen) + "...";
+      }
+      return text;
+    },
   },
 
   props: ['product'],
@@ -69,7 +69,7 @@ export default {
 .cardMenu {
   background-color: black;
   height: 500px;
-  overflow-y: hidden;
+  overflow: hidden;
 
 
 
@@ -79,10 +79,12 @@ export default {
   }
 
 }
-.card-img-top{
-  width: 100%;
+
+.card-img-top {
   height: 220px;
+  object-fit: contain;
 }
+
 .mybtn {
   background-color: #EBB825;
 
