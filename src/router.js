@@ -7,7 +7,7 @@ import NotFound from './pages/NotFound.vue';
 import AppDownload from './pages/AppDownload.vue';
 import MenuRestaurant from './pages/MenuRestaurant.vue';
 import ShowProduct from './pages/ShowProduct.vue';
-
+import CheckOutPage from './pages/CheckOutPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -26,6 +26,11 @@ const router = createRouter({
             path: '/contacts',
             name: 'contacts',
             component: ContactUs
+        },
+        {
+            path: '/payment',
+            name: 'payment',
+            component: CheckOutPage
         },
         {
             path: '/product/:id/:slug',

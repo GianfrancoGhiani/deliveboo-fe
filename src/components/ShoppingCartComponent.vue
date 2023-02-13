@@ -24,7 +24,7 @@
         <span class="fs-4">Total:</span>
         <span class="fs-4">$ {{ this.cartTotal.toFixed(2) }}</span>
       </div>
-      <button class="btn mybtn mt-2" @click="clearCart()">Delete cart items</button>
+      <button class="btn mybtn mt-2" @click="checkOut()">Delete cart items</button>
     </div>
   </div>
 </template>
@@ -43,15 +43,15 @@ export default {
       store.cartData.splice(index, 1);
       localStorage.setItem(`cart`, JSON.stringify(store.cartData));
     },
-    clearCart(){
-      localStorage.clear();
-      this.$router.go(0);
-    },
+    checkOut(){
+      this.$router.push({path:'/payment'})
+    }
   },
   computed: {
     cartTotal() {
       return store.cartData.reduce((a, b) => a + b.price * b.quantity, 0);
     },
+
   },
   mounted() {
 
