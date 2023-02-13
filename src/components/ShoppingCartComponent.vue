@@ -2,15 +2,15 @@
   <div class="shopping_cart">
     <div class="mk_container">
       <div class="py-2 fs-3 text-end" @click="store.openCart = !store.openCart">
-        <i class="fa-solid fa-circle-xmark"></i>
+        <i class="fa-solid fa-circle-xmark yellowButton"></i>
       </div>
-      <h6>Shopping Cart</h6>
+      <h4 class="yellowButton">Shopping Cart</h4>
       <div class="product_list mt-5">
         <div class="cart_item d-flex py-3 justify-content-between align-items-center"
           v-for="(cartItem, index) in store.cartData" :key="index">
           <div>
-            <p>{{ cartItem.name }}</p>
-            <p>{{ cartItem.price_sign }}{{ cartItem.price }}</p>
+            <h5 class="colorName">{{ cartItem.name }}</h5>
+            <p>$ {{ cartItem.price_sign }}{{ cartItem.price }}</p>
             <input type="number" class="w-25 me-2" v-model="cartItem.quantity" min="1" />
             <label for="quantity">Quantity</label>
           </div>
@@ -19,9 +19,9 @@
       </div>
       <div class="cart_total mt-4 d-flex justify-content-between me-auto">
         <span class="fs-4">Total:</span>
-        <span class="fs-4">{{ this.cartTotal.toFixed(2) }}</span>
+        <span class="fs-4">$ {{ this.cartTotal.toFixed(2) }}</span>
       </div>
-      <button class="btn" @click="clearCart()">Delete cart items</button>
+      <button class="btn mybtn mt-2" @click="clearCart()">Delete cart items</button>
     </div>
   </div>
 </template>
@@ -62,26 +62,43 @@ export default {
 
 .product_list {
   overflow-y: auto;
-  height: 70vh;
+  height: 60vh;
 }
 
 .cart_item {
-  border-bottom: 1px solid black;
+  border-bottom: 0.25px solid $light-grey;
 }
 
 .shopping_cart {
   position: fixed;
+  padding: 30px;
   top: 0;
   right: 0;
   width: 500px;
   min-height: 100vh;
-  background-color: $white;
-  box-shadow: -1px 1px 10px 0px $light_grey;
-  z-index: 20;
-  color: $dark_gray;
+  background-color: $dark-gray;
+  //box-shadow: -1px 1px 10px 0px $light_grey;
+  z-index: 100000;
+  color: $light_grey;
 
   i {
     cursor: pointer;
+  }
+}
+
+.colorName{
+  color: $orange;
+}
+
+.yellowButton{
+  color: #EBB825;
+}
+
+.mybtn {
+  background-color: #EBB825;
+
+  &:hover {
+    background-color: $orange;
   }
 }
 </style>

@@ -6,7 +6,7 @@
     <router-view></router-view>
   </div>
   <div class="aside_menu_shop">
-    <i class="fa-brands fa-opencart" @click="store.openCart = true"></i>
+    <i class="fa-solid fa-cart-shopping" @click="store.openCart = true"></i>
     <Transition class="cart_animation">
       <div class="cart_counter" v-if="store.cartData.length > 0">
         <span>{{ store.cartData.length }}</span>
@@ -85,8 +85,8 @@ export default {
   flex-direction: column;
   row-gap: 0.5rem;
   padding: 0.8rem;
-  background-color: white;
-  color: gray;
+  background-color: $orange;
+  color: white;
   font-size: 1.4rem;
   box-shadow: 0px 4px 8px -2px rgba(gray, 0.35);
   border-radius: 0.5rem 0 0 0.5rem;
@@ -95,14 +95,16 @@ export default {
 
   &:hover {
     padding-right: 1.5rem;
+    color: $dark-gray;
+    background-color: #EBB825;
   }
 }
 .cart_counter {
   width: 30px;
   height: 30px;
   border-radius: 50px;
-  background-color: pink;
-  color: white;
+  background-color: #EBB825;
+  color: black;
   text-align: center;
   line-height: 35px;
   font-size: 20px;
