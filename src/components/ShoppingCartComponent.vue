@@ -21,6 +21,7 @@
         <span class="fs-4">Total:</span>
         <span class="fs-4">{{ this.cartTotal.toFixed(2) }}</span>
       </div>
+      <button class="btn" @click="clearCart()">Delete cart items</button>
     </div>
   </div>
 </template>
@@ -38,6 +39,10 @@ export default {
     removeFromCart(index) {
       store.cartData.splice(index, 1);
       localStorage.setItem(`cart`, JSON.stringify(store.cartData));
+    },
+    clearCart(){
+      localStorage.clear();
+      this.$router.go(0);
     },
   },
   computed: {

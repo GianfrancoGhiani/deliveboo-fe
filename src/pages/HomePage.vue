@@ -5,6 +5,18 @@
     <div class="container mt-5 mb-5">
         <CarouselComponent></CarouselComponent>
         <CarouselBrandComponent></CarouselBrandComponent>
+        <h2 class="text-center m-4">Choose your restaurant</h2>
+
+        <div v-if="types" class="text-center">
+            <div class="form-check form-check-inline" v-for="type in types" >
+            <input name="types" class="form-check-input" type="radio" id="flexSwitchCheckDefault" @click="selectedType = type.id" value="{{ type.id }}">
+            <label class="form-check-label" for="flexSwitchCheckDefault">{{type.name}}</label>
+            </div>
+            <div class="mt-3">
+            <button @click="getRestaurant" class="btn mybtn">Get restaurant</button>
+             </div>
+        </div>
+
         <div v-if="restaurants" class="row row-cols-3">
 
             <div class="col" v-for="restaurant in restaurants" @click="">
@@ -36,12 +48,16 @@ export default {
         return {
             store,
             restaurants: [],
+            types: [],
+            selectedType: null,
         }
     },
     methods: {
         getRestaurant() {
-            axios.get(`${this.store.apiBaseUrl}/restaurants`).then((response) => {
-                this.restaurants = response.data.results;
+            axios.get(`${this.store.apiBaseUrl}/restaurants`,{params:{types : this.selectedType}}).then((response) => {
+                this.restaurants = response.data.results.restaurants;
+                this.types = response.data.results.types;
+
                 console.log(response)
             });
         },
@@ -56,5 +72,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use './../assets/styles/partials/variables' as *;
+@import "../../node_modules/vue3-carousel/dist/carousel.css";
+h2{
+    color: $orange;
+}
 
+.mybtn {
+  background-color: #EBB825;
+
+  &:hover {
+    background-color: $orange;
+  }
+}
 </style>

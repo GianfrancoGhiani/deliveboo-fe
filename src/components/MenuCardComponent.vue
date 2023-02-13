@@ -14,7 +14,7 @@
       <h5 class="card-title">{{ product.name }}</h5>
       <p class="card-text text-capitalize">{{ product.ingredients }}</p>
     </div>
-    <a href="#" class="btn mybtn"><b>Order it</b> </a>
+    <a href="#" class="btn mybtn" @click="addtoCart()"><b>Order it</b> </a>
   </div>
 </template>
 
@@ -25,7 +25,24 @@ export default {
   data() {
     return {
       store,
+      singleProduct: this.product,
     }
+  },
+  methods:{
+    addtoCart() {
+      let defaultquantity = 1;
+      let cartItem = store.cartData.find(i => i.id === this.singleProduct.id);
+      if (cartItem) {
+        cartItem.quantity++
+      } else {
+        store.cartData.push({
+          ...this.singleProduct,
+          quantity: defaultquantity
+        })
+      }
+      localStorage.setItem('cart', JSON.stringify(store.cartData));
+      console.log(store.shoppingCart, store.cartData);
+    },
   },
 
   props: ['product'],
