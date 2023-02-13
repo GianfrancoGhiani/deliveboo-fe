@@ -28,6 +28,11 @@ const router = createRouter({
             component: ContactUs
         },
         {
+            path: '/app-download',
+            name: 'App',
+            component: AppDownload
+        },
+        {
             path: '/product/:id/:slug',
             name: 'show',
             component: ShowProduct
