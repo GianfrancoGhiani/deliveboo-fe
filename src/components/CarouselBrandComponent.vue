@@ -10,7 +10,7 @@
             </slide>
 
             <template #addons>
-                <navigation />
+                <!-- <navigation /> -->
             </template>
         </carousel>
     </div>

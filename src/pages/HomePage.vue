@@ -3,8 +3,8 @@
     <JumboComponent></JumboComponent>
 
     <div class="container mt-5 mb-5">
-        <CarouselComponent></CarouselComponent>
-        <CarouselBrandComponent></CarouselBrandComponent>
+        <!-- <CarouselComponent></CarouselComponent> -->
+       
         <h2 class="text-center m-4">Choose your restaurant</h2>
 
         <div v-if="types" class="text-center">
@@ -24,7 +24,9 @@
                 <CardComponent :restaurant="restaurant"></CardComponent>
             </div>
         </div>
+        
         <ReviewCarousel></ReviewCarousel>
+        <CarouselBrandComponent></CarouselBrandComponent>
     </div>
 </template>
 

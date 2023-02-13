@@ -47,7 +47,7 @@ export default {
         })
       }
       localStorage.setItem('cart', JSON.stringify(store.cartData));
-      console.log(store.shoppingCart, store.cartData);
+      console.log(cartItem);
     },
     truncateContent(text) {
       if (text.length > this.contentMaxLen) {

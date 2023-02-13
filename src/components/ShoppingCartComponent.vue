@@ -8,11 +8,14 @@
       <div class="product_list mt-5">
         <div class="cart_item d-flex py-3 justify-content-between align-items-center"
           v-for="(cartItem, index) in store.cartData" :key="index">
-          <div>
-            <h5 class="colorName">{{ cartItem.name }}</h5>
-            <p>$ {{ cartItem.price_sign }}{{ cartItem.price }}</p>
-            <input type="number" class="w-25 me-2" v-model="cartItem.quantity" min="1" />
-            <label for="quantity">Quantity</label>
+          <div class="d-flex align-items-center ">
+            <img :src="`${store.imagBasePath}${cartItem.image_url}`" alt="" class="bordino">
+            <div>
+              <h5 class="colorName">{{ cartItem.name }}</h5>
+              <p>$ {{ cartItem.price_sign }}{{ cartItem.price }}</p>
+              <input type="number" class="w-25 me-2" v-model="cartItem.quantity" min="1" />
+              <label for="quantity">Quantity</label>
+            </div>
           </div>
           <span @click="removeFromCart()"><i class="fa-solid fa-trash"></i></span>
         </div>
@@ -101,4 +104,10 @@ export default {
     background-color: $orange;
   }
 }
+img{
+  width: 20%;
+  margin-right: 10px;
+  border: 1px solid $orange;
+}
+
 </style>
