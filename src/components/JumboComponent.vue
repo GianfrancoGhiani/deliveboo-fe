@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <img src="public/img/jumbo/jumbo-2.jpg" alt="">
+      <video src="public/video/production ID_4170500.mp4" autoplay muted loop class="w-100"></video>
     </div>
 </template>
 
@@ -16,5 +16,10 @@ img{
     height: 400px;
     object-fit: cover;
     position: top;
+}
+video{
+    height: 300px;
+    width: 100%;
+    object-fit: fill;
 }
 </style>

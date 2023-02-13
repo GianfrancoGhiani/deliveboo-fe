@@ -45,7 +45,7 @@ export default {
 
 
   .card-text {
-    height: 140px;
+    height: 120px;
     overflow-y: scroll;
   }
 
@@ -57,6 +57,9 @@ export default {
   &:hover {
     background-color: $orange;
   }
+}
+h5{
+  color: $orange;
 }
 
 // .mybtn:hover{
