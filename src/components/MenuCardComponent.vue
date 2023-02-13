@@ -7,7 +7,7 @@
     <a href="#" class="btn btn-primary">Order it</a>
   </div>
 </div>  -->
-
+<router-link :to="{ name: 'show',params:{id:product.id,slug: product.slug}}">
   <div class="card cardMenu border-warning m-3 pt-2" style="width: 18rem;">
     <img class="card-img-top" :src="`${store.imagBasePath}${product.image_url}`" alt="Card image cap">
     <div class="card-body">
@@ -16,6 +16,7 @@
     </div>
     <a href="#" class="btn mybtn" @click="addtoCart()"><b>Order it</b> </a>
   </div>
+</router-link>
 </template>
 
 <script>
@@ -58,7 +59,7 @@ export default {
   background-color: black;
   height: 500px;
   overflow-y: hidden;
- 
+
 
 
   .card-text {
@@ -75,11 +76,21 @@ export default {
     background-color: $orange;
   }
 }
-h5{
+
+h5 {
   color: $orange;
 }
 
-// .mybtn:hover{
-//     background-color: $orange;
-// }
+.prezzo{
+  position: absolute;
+  top: 10px;
+  left: 0;
+  color: $orange;
+  background-color: rgba(0, 0, 0, 0.445);
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0 5px;
+}
+
+
 </style>

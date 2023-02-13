@@ -6,7 +6,7 @@ import AboutUs from './pages/About.vue';
 import NotFound from './pages/NotFound.vue';
 import AppDownload from './pages/AppDownload.vue';
 import MenuRestaurant from './pages/MenuRestaurant.vue';
-
+import ShowProduct from './pages/ShowProduct.vue';
 
 
 const router = createRouter({
@@ -28,9 +28,9 @@ const router = createRouter({
             component: ContactUs
         },
         {
-            path: '/contacts',
-            name: 'contacts',
-            component: ContactUs
+            path: '/product/:id/:slug',
+            name: 'show',
+            component: ShowProduct
         },
         {
             path: '/restaurant/:id/:slug',
