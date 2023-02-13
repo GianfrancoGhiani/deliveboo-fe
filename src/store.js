@@ -7,15 +7,7 @@ export const store = reactive({
     isLoading: false,
     openCart: false,
     shoppingCart: [],
-    cartData: [
-        {
-            name: 'prodotto 1',
-            price_sign: '$',
-            price: 12,
-            quantity: 10,
-            cartTotal: '50'
-        }
-    ],
+    cartData: [],
 
     menuItems: [
         {

@@ -5,13 +5,16 @@
     <div class="container mt-5 mb-5">
         <CarouselComponent></CarouselComponent>
         <CarouselBrandComponent></CarouselBrandComponent>
+        <h2 class="text-center m-4">Choose your restaurant</h2>
 
-        <div v-if="types">
-            <div class="form-check form-switch" v-for="type in types" >
-            <input name="types" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" @click="selectedType = type.id" value="{{ type.id }}">
+        <div v-if="types" class="text-center">
+            <div class="form-check form-check-inline" v-for="type in types" >
+            <input name="types" class="form-check-input" type="radio" id="flexSwitchCheckDefault" @click="selectedType = type.id" value="{{ type.id }}">
             <label class="form-check-label" for="flexSwitchCheckDefault">{{type.name}}</label>
             </div>
-            <button @click="getRestaurant">Get restaurant</button>
+            <div class="mt-3">
+            <button @click="getRestaurant" class="btn mybtn">Get restaurant</button>
+             </div>
         </div>
 
         <div v-if="restaurants" class="row row-cols-3">
@@ -69,5 +72,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use './../assets/styles/partials/variables' as *;
+@import "../../node_modules/vue3-carousel/dist/carousel.css";
+h2{
+    color: $orange;
+}
 
+.mybtn {
+  background-color: #EBB825;
+
+  &:hover {
+    background-color: $orange;
+  }
+}
 </style>

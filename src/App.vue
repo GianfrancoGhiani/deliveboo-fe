@@ -37,6 +37,10 @@ export default {
     return {
       store
     }
+  },
+  mounted(){
+    const cartData = localStorage.getItem('cart');
+    store.cartData = cartData ? JSON.parse(cartData) : [];
   }
 }
 </script>
