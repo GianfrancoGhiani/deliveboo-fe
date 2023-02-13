@@ -8,24 +8,25 @@
     <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div> -->
-  <div class="py-1">
-    <router-link :to="{name:'menu', params:{id:restaurant.id, slug:restaurant.slug}}">
-    <div class="wrap">
-    
-      <div class="tile">
-        <img :src="`${store.imagBasePath}${restaurant.image_url}`" />
-        <div class="text">
-          <h1>{{ restaurant.name }}</h1>
-          <h2 class="animate-text text-capitalize">{{ restaurant.address }}</h2>
-          <p class="animate-text text-capitalize">{{ restaurant.tel_num }}</p>
-          <p v-for="(type,index) in restaurant.types"  class="animate-text text-capitalize">{{ type.name }}</p>
-        </div>
-      </div>
-      
-    </div>
-  </router-link>
-  </div>
+  <div class="contenitore">
+    <div class="py-1">
+      <router-link :to="{ name: 'menu', params: { id: restaurant.id, slug: restaurant.slug } }">
+        <div class="wrap">
 
+          <div class="tile">
+            <img :src="`${store.imagBasePath}${restaurant.image_url}`" />
+            <div class="text">
+              <h1>{{ restaurant.name }}</h1>
+              <h2 class="animate-text text-capitalize">{{ restaurant.address }}</h2>
+              <p class="animate-text text-capitalize">{{ restaurant.tel_num }}</p>
+              <p v-for="(type, index) in restaurant.types" class="animate-text text-capitalize">{{ type.name }}</p>
+            </div>
+          </div>
+
+        </div>
+      </router-link>
+    </div>
+  </div>
 </template>
 
 
@@ -34,8 +35,8 @@
 import { store } from '../store';
 export default {
   name: "CardComponent",
-  data(){
-    return{
+  data() {
+    return {
       store,
     }
   },
@@ -75,7 +76,7 @@ body {
   color: white;
   font-family: 'Roboto';
   border-radius: 5px;
-  
+
 
 }
 
@@ -183,19 +184,14 @@ body {
   transition-delay: 0.15s;
 }
 
-
-@media (max-width: 1000px) {
-  .wrap {
-    flex-direction: column;
-    width: 400px;
-  }
-}
-
 h1 {
   color: $orange;
   font-weight: 400;
 }
-.text{
+
+.text {
   overflow-y: auto;
 }
+
+
 </style>
