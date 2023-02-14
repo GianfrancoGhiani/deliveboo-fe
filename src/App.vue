@@ -9,7 +9,7 @@
     <i class="fa-solid fa-cart-shopping" @click="store.openCart = true"></i>
     <Transition class="cart_animation">
       <div class="cart_counter" v-if="store.cartData.length > 0">
-        <span>{{ store.cartData.length }}</span>
+        <span>{{ totalItems() }}</span>
       </div>
     </Transition>
   </div>
@@ -38,7 +38,12 @@ export default {
       store
     }
   },
-  mounted(){
+  methods: {
+    totalItems() {
+      return store.cartData.reduce((a, b) => a + b.quantity, 0);
+    }
+  },
+  mounted() {
     const cartData = localStorage.getItem('cart');
     store.cartData = cartData ? JSON.parse(cartData) : [];
   }
@@ -76,6 +81,7 @@ export default {
   transform: translateX(550px);
   // opacity: 0;
 }
+
 .aside_menu_shop {
   position: fixed;
   top: 6.5rem;
@@ -99,6 +105,7 @@ export default {
     background-color: #EBB825;
   }
 }
+
 .cart_counter {
   width: 30px;
   height: 30px;
@@ -112,5 +119,4 @@ export default {
   bottom: -15px;
   left: -15px;
 }
-
 </style>
