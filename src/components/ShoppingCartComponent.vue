@@ -17,7 +17,7 @@
               <label for="quantity">Quantity</label>
             </div>
           </div>
-          <span @click="removeFromCart()"><i class="fa-solid fa-trash"></i></span>
+          <span @click="removeFromCart(index)"><i class="fa-solid fa-trash"></i></span>
         </div>
       </div>
       <div class="cart_total mt-4 d-flex justify-content-between me-auto">
