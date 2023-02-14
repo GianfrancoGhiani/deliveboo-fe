@@ -10,7 +10,7 @@
                     The message has been successfully sent!
                 </div>
                 <div class="d-flex justify-content-center">
-                    <div class="row w-50 m-5">
+                    <div class="contactform row w-50 m-5">
                         <form class="col-12 text-start" @submit.prevent="sendForm()">
                             <div class="mb-4">
                                 <input class="border border-light text-white bg-transparent form-control" type="text"
@@ -48,10 +48,10 @@
                 </div>
             </div>
         </div>
-        <div class="text-center">
+        <div class="text-center col-lg-12 p-4">
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d358195.89843116904!2d8.5754299!3d45.4616357!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c22ab05c3bbf%3A0xa481aa5be8d54a11!2sBoolean%20SRLS!5e0!3m2!1sit!2sit!4v1674663934196!5m2!1sit!2sit"
-                width="1300" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                class="w-100" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </section>
@@ -154,5 +154,12 @@ export default {
 
 
 
+}
+
+
+@media screen and (max-width: 600px) {
+    .w-50 {
+        min-width: 100%;
+  }
 }
 </style>

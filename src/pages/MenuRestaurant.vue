@@ -1,10 +1,10 @@
 <template>
     <div class="container">
         <h1 class="py-5 text-center ">What do you want to eat?</h1>
-        <div class="row row-cols-4">
+        <div class="row">
             <MenuCardComponent v-for="product in products" :product="product"></MenuCardComponent>
         </div>
-        <div class="d-flex justify-content-center">
+        <div class="justify-content-center d-flex">
             <nav aria-label="Page navigation example ">
                 <ul class="pagination mt-5">
                     <li class="page-item " :class="{ 'disabled': currentPage === 1 }">
