@@ -2,7 +2,8 @@
     <div class="container">
         <h1 class="py-5 text-center ">What do you want to eat?</h1>
         <div class="row row-cols-4">
-            <MenuCardComponent v-for="product in products" :product="product"></MenuCardComponent>
+            <MenuCardComponent v-for="(product, index) in products" :product="product" :key="product.id">
+            </MenuCardComponent>
         </div>
         <div class="d-flex justify-content-center">
             <nav aria-label="Page navigation example ">
@@ -71,7 +72,8 @@ export default {
 h1 {
     color: $orange;
 }
-.page-link{
+
+.page-link {
     color: $orange;
 }
 </style>
