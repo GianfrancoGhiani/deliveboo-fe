@@ -24,7 +24,9 @@
         <span class="fs-4">Total:</span>
         <span class="fs-4">$ {{ this.cartTotal.toFixed(2) }}</span>
       </div>
-      <button class="btn mybtn mt-2" @click="checkOut()">Delete cart items</button>
+      <button class="btn mybtn mt-2" @click="checkOut()" :disabled="!store.cartData.length">Order it</button>
+      <button class="btn ms-2 mybtn mt-2" @click="clearCart()" :disabled="!store.cartData.length">Clear All</button>
+
     </div>
   </div>
 </template>
@@ -43,9 +45,15 @@ export default {
       store.cartData.splice(index, 1);
       localStorage.setItem(`cart`, JSON.stringify(store.cartData));
     },
-    checkOut(){
-      this.$router.push({path:'/payment'})
+    checkOut() {
+      this.$router.push({ path: '/payment' })
+    },
+    clearCart() {
+      localStorage.clear();
+      this.$router.go(0)
+      store.openCart = false;
     }
+
   },
   computed: {
     cartTotal() {
@@ -89,25 +97,26 @@ export default {
   }
 }
 
-.colorName{
+.colorName {
   color: $orange;
 }
 
-.yellowButton{
+.yellowButton {
   color: #EBB825;
 }
 
 .mybtn {
   background-color: #EBB825;
+  font-weight: 700;
 
   &:hover {
     background-color: $orange;
   }
 }
-img{
+
+img {
   width: 20%;
   margin-right: 10px;
   border: 1px solid $orange;
 }
-
 </style>

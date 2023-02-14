@@ -24,9 +24,32 @@ body{
 //     scrollbar-width: none;  /* Firefox */
 //   }
 
+[data-braintree-id="toggle"] {
+  display: none;
+}
 
 #checkout {
+  [data-braintree-id="methods"]{
+    min-width: 400px;
+    .braintree-method__logo{
+      svg{
+        padding: 2px;
+        border-radius: 4px;
+        background-color: $white;
+      }
+    }
+    [data-braintree-id="methods-container"]{
+      
+      & *{
+      color: $white-text;
+      background-color: $dark-gray;
+    }
+    } 
+    
+  }
+
   [data-braintree-id="sheet-container"] {
+      
       .braintree-sheet *{
           color: $white-text;
           background-color: $dark-gray;
@@ -46,7 +69,10 @@ body{
           color: $orange;
         }
       }
-      .braintree-sheet__card-icon{
+      .braintree-form__field-error{
+        color: lighten($color: $orange, $amount: 5);
+      }
+      .braintree-sheet__card-icon, .braintree-form__field-secondary-icon{
         svg{
           padding: 2px;
           border-radius: 4px;

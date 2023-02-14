@@ -2,7 +2,30 @@
     <div id="checkout" class="d-flex flex-column align-items-center">
 
 
-        <div class="w-25">
+        <div class="w-auto p-5">
+            <div class="">
+                <div>
+                    <label for="customer_firstname">Name</label>
+                    <input type="text" name="customer_firstname" id="customer_firstname">
+                </div>
+                <div>
+                    <label for="customer_lastname">Surname</label>
+                    <input type="text" name="customer_lastname" id="customer_lastname">
+                </div>
+                <div>
+                    <label for="customer_email">Email</label>
+                    <input type="email" name="customer_email" id="customer_email">
+                </div>
+                <div>
+                    <label for="customer_address">Address</label>
+                    <input type="text" name="customer_address" id="customer_address">
+                </div>
+                <div>
+                    <label for="customer_tel">Telephone Number</label>
+                    <input type="text" name="customer_tel" id="customer_tel">
+                </div>
+
+            </div>
             <div id="dropin-wrapper">
                 <div id="checkout-message"></div>
                 <div id="dropin-container"></div>
@@ -58,7 +81,26 @@ export default {
 
                 braintree.dropin.create({
                     authorization: this.apiToken,
-                    selector: '#dropin-container'
+                    selector: '#dropin-container',
+                    card: {
+                        overrides: {
+                            styles: {
+                                input: {
+                                    color: 'white',
+                                },
+                                'input:focus': {
+                                    color: 'white',
+                                },
+                                '.number': {
+                                    'font-family': 'monospace'
+                                    // Custom web fonts are not supported. Only use system installed fonts.
+                                },
+                                '.invalid': {
+                                    color: '#FC8019'
+                                }
+                            }
+                        }
+                    }
                 }, function (err, instance) {
                     button.addEventListener('click', function () {
                         button.setAttribute("disabled", true);
@@ -82,7 +124,7 @@ export default {
                                 if (res.data.success) {
                                     message.classList.add('alert', 'alert-success', 'mb-3', 'mt-3');
                                     localStorage.clear();
-                                    setTimeout(() => { location.replace("/"); }, 600)
+                                    // setTimeout(() => { location.replace("/"); }, 600)
 
                                 } else {
                                     message.classList.add('alert', 'alert-danger', 'mb-3', 'mt-3');
@@ -98,9 +140,7 @@ export default {
 
             })
         },
-        clearCart() {
 
-        },
 
     }
 }
