@@ -18,7 +18,6 @@ img{
     position: top;
 }
 video{
-    height: 300px;
     width: 100%;
     object-fit: fill;
 }
