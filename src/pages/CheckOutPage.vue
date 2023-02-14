@@ -81,24 +81,25 @@ export default {
                                 const message = document.querySelector('#payment-message');
                                 if (res.data.success) {
                                     message.classList.add('alert', 'alert-success', 'mb-3', 'mt-3');
+                                    localStorage.clear();
+                                    setTimeout(() => { location.replace("/"); }, 600)
+
                                 } else {
                                     message.classList.add('alert', 'alert-danger', 'mb-3', 'mt-3');
                                 }
+                                button.classList.add('d-none');
                                 message.innerHTML = res.data.message;
-                                button.innerHTML = 'Paid';
+
                             })
 
                         });
                     })
                 });
 
-
-
             })
         },
         clearCart() {
-            localStorage.clear();
-            this.$router.go(0);
+
         },
 
     }
