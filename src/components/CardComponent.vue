@@ -11,7 +11,7 @@
   <div class="contenitore">
     <div class="py-1">
       <router-link :to="{ name: 'menu', params: { id: restaurant.id, slug: restaurant.slug } }">
-        <div class="wrap">
+        <div class="wrap justify-content-center">
 
           <div class="tile">
             <img :src="`${store.imagBasePath}${restaurant.image_url}`" />
@@ -54,7 +54,7 @@ body {
 }
 
 .wrap {
-  margin: 50px auto 0 auto;
+  margin: 20px auto 0 auto;
   width: 100%;
   display: flex;
   align-items: space-around;

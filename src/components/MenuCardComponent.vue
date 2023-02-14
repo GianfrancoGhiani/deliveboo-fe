@@ -7,7 +7,7 @@
     <a href="#" class="btn btn-primary">Order it</a>
   </div>
 </div>  -->
-  <div class="containter-sm">
+  <div class="containter-sm col-12 col-xl-3 col-lg-4 col-md-6 col-sm-12">
     <div class="card cardMenu border-warning mt-4 p-2">
       <router-link :to="{ name: 'show', params: { id: product.id, slug: product.slug } }">
         <img class="card-img-top" :src="`${store.imagBasePath}${product.image_url}`" alt="Card image cap">
@@ -106,5 +106,11 @@ h5 {
   font-weight: 600;
   border-radius: 8px;
   padding: 0 5px;
+}
+
+@media screen and (max-width: 576px){
+      .card-body{
+        text-align: center;
+      }
 }
 </style>
