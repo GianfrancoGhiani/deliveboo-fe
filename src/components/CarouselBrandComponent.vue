@@ -1,7 +1,7 @@
 <template>
     <div class="py-5">
         <h2 class="text-center mt-4">Some of the brand that choose us</h2>
-        <carousel :itemsToShow="4" :wrapAround="true" :transition="1000" :autoplay="1500">
+        <carousel :settings="settings" :breakpoints="breakpoints" :wrapAround="true" :transition="1000" :autoplay="1500">
             <slide v-for="(slide, index) in homePaths" :key="index">
                 <div class="mt-2">
                     <img class="carousel__item" :src="slide.path" :alt="slide.alt">
@@ -32,6 +32,24 @@ export default {
     },
     data: function () {
         return {
+            settings: {
+                itemsToShow: 2,
+                snapAlign: 'center',
+            },
+            // breakpoints are mobile first
+            // any settings not specified will fallback to the carousel settings
+            breakpoints: {
+                // 700px and up
+                700: {
+                    itemsToShow: 4,
+                    snapAlign: 'center',
+                },
+                // 1024 and up
+                1024: {
+                    itemsToShow: 6,
+                    snapAlign: 'start',
+                },
+            },
 
             homePaths: [
                 {
