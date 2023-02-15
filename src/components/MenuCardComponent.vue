@@ -13,7 +13,7 @@
         <img class="card-img-top" :src="`${store.imagBasePath}${product.image_url}`" alt="Card image cap">
       </router-link>
       <div class="card-body">
-        <h5 class="card-title">{{ truncateContent(product.name) }}</h5>
+        <h5 class="card-title text-capitalize">{{ truncateContent(product.name) }}</h5>
         <p class="card-text text-capitalize mt-3">{{ product.ingredients }}</p>
         <p class="prezzo">${{ product.price }}</p>
       </div>

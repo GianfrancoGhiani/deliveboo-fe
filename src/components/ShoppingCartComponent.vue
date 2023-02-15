@@ -12,9 +12,20 @@
           <div class="d-flex align-items-center ">
             <img :src="`${store.imagBasePath}${cartItem.image_url}`" alt="" class="bordino">
             <div>
-              <h5 class="colorName">{{ cartItem.name }}</h5>
+              <h5 class="colorName text-capitalize">{{ cartItem.name }}</h5>
               <p>$ {{ cartItem.price_sign }}{{ cartItem.price }}</p>
-              <input type="number" class="w-25 me-2" v-model="cartItem.quantity" min="1" />
+
+              <button @click="decreaseQuantity(cartItem)" class="btn btn-link px-2">
+                <i class="fas fa-minus"></i>
+              </button>
+
+
+              <input type="number" class="w-25 me-2 text-center myinput" v-model="cartItem.quantity" min="1" />
+
+              <button @click="increaseQuantity(cartItem)" class="btn btn-link px-2">
+                <i class="fas fa-plus"></i>
+              </button>
+
               <label for="quantity">Quantity</label>
             </div>
           </div>
@@ -55,6 +66,16 @@ export default {
       localStorage.clear();
       this.$router.go(0)
       store.openCart = false;
+    },
+
+    increaseQuantity(cartItem) {
+      cartItem.quantity++;
+    },     
+    
+    decreaseQuantity(cartItem) {
+      if (cartItem.quantity > 1) {
+        cartItem.quantity--;
+      }
     },
 
 
@@ -121,8 +142,28 @@ export default {
 }
 
 img {
-  width: 20%;
+  width: 30%;
   margin-right: 10px;
   border: 1px solid $orange;
 }
+
+.btn-link {
+  color: #EBB825;
+
+  &:hover{
+    color: $orange;
+  }
+}
+
+.myinput{
+  color: white;
+  background-color: transparent;
+  border: #EBB825 1px solid;
+
+  &:hover{
+    color: $orange;
+    border: $orange 1px solid;
+  }
+}
+
 </style>

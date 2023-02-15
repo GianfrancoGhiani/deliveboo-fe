@@ -16,14 +16,14 @@
         <button @click="getRestaurant" class="btn mybtn">Find Restaurant</button>
       </div>
     </div>
-
-    <div v-if="restaurants" class="row row-cols-3">
+<div class="d-flex justify-content-center">
+    <div v-if="restaurants" class="row row-col-lg-3">
 
       <div class="col" v-for="restaurant in restaurants" @click="">
         <CardComponent :restaurant="restaurant"></CardComponent>
       </div>
     </div>
-
+  </div>
     <ReviewCarousel></ReviewCarousel>
     <CarouselBrandComponent></CarouselBrandComponent>
   </div>
