@@ -8,7 +8,7 @@
             </div>
 
 
-            <Carousel class="cars" :items-to-show="3" :wrap-around="true" :autoplay="4000">
+            <Carousel class="cars" :wrap-around="true" :autoplay="4000" :settings="settings" :breakpoints="breakpoints">
                 <Slide v-for="slide in store.carouselcard" :key="slide">
 
                     <div class=" text-start mx-3 bg-transparent px-5 pb-5 rounded-3">
@@ -43,8 +43,25 @@ export default {
     name: 'ReviewCarousel',
     data() {
         return {
-            store
-
+            store,
+            settings: {
+                itemsToShow: 1,
+                snapAlign: 'center',
+            },
+            // breakpoints are mobile first
+            // any settings not specified will fallback to the carousel settings
+            breakpoints: {
+                // 700px and up
+                700: {
+                    itemsToShow: 2,
+                    snapAlign: 'center',
+                },
+                // 1024 and up
+                1024: {
+                    itemsToShow: 3,
+                    snapAlign: 'start',
+                },
+            },
         }
     },
     components: {
@@ -114,10 +131,16 @@ h4 {
     opacity: 0.5;
 }
 
-@media screen and (max-width: 992px) {
+@media only screen and (max-width: 767px) {
     .cars {
-        item-to-show: 2;
+        items-to-show: 1;
     }
+}
 
+/* Media query per tablet */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    .cars {
+        items-to-show: 2;
+    }
 }
 </style>
