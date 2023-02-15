@@ -20,7 +20,7 @@
               </button>
 
 
-              <input type="number" class="w-25 me-2 text-center myinput" v-model="cartItem.quantity" min="1" />
+              <input type="text" class="w-25 me-2 text-center myinput" v-model="cartItem.quantity" min="1" disabled />
 
               <button @click="increaseQuantity(cartItem)" class="btn btn-link px-2">
                 <i class="fas fa-plus"></i>
@@ -70,8 +70,8 @@ export default {
 
     increaseQuantity(cartItem) {
       cartItem.quantity++;
-    },     
-    
+    },
+
     decreaseQuantity(cartItem) {
       if (cartItem.quantity > 1) {
         cartItem.quantity--;
@@ -150,20 +150,19 @@ img {
 .btn-link {
   color: #EBB825;
 
-  &:hover{
+  &:hover {
     color: $orange;
   }
 }
 
-.myinput{
+.myinput {
   color: white;
   background-color: transparent;
   border: #EBB825 1px solid;
 
-  &:hover{
+  &:hover {
     color: $orange;
     border: $orange 1px solid;
   }
 }
-
 </style>
