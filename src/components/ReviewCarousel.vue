@@ -8,7 +8,7 @@
             </div>
 
 
-            <Carousel class="cars" :items-to-show="3" :wrap-around="true" autoplay="4000">
+            <Carousel class="cars" :items-to-show="3" :wrap-around="true" :autoplay="4000">
                 <Slide v-for="slide in store.carouselcard" :key="slide">
 
                     <div class=" text-start mx-3 bg-transparent px-5 pb-5 rounded-3">
@@ -114,11 +114,10 @@ h4 {
     opacity: 0.5;
 }
 
-@media screen and (max-width: 992px){
-    .cars{
-        item-to-show:2;
+@media screen and (max-width: 992px) {
+    .cars {
+        item-to-show: 2;
     }
-    
-}
 
+}
 </style>

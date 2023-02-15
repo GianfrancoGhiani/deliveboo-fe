@@ -64,7 +64,7 @@ export default {
           this.restaurants = response.data.results.restaurants;
           this.types = response.data.results.types;
 
-          console.log(response)
+          // console.log(response)
         });
     },
     showRestaurant(restaurant) {
@@ -75,7 +75,7 @@ export default {
       this.selectedType = Array.from(checkboxes) // Convert checkboxes to an array to use filter and map.
         .filter(i => i.checked) // Use Array.filter to remove unchecked checkboxes.
         .map(i => i.value)
-      console.log(this.selectedType);
+      // console.log(this.selectedType);
     }
   },
   mounted() {

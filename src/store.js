@@ -14,9 +14,9 @@ export const store = reactive({
         if(this.cartData.length){
 
             axios.get(`${this.apiBaseUrl}/restaurant/${this.cartData[0].restaurant_id}`).then((response) => {
-                console.log(response);
+                // console.log(response);
                 this.restaurant = response.data.results;
-                console.log(this.restaurant);
+                // console.log(this.restaurant);
               })
 
         }
