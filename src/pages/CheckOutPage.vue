@@ -122,6 +122,11 @@ export default {
 
 
                             const productsArray = JSON.parse(localStorage.getItem('cart'));
+                            // let productsIds = []
+                            // productsArray.forEach(element => {
+                            //     productsIds.push(element.id)
+                            // })
+
                             let productsIdsQuantity = [];
                             productsArray.forEach(element => {
                                 const prod = {
@@ -135,14 +140,15 @@ export default {
                             axios.post(`${store.apiBaseUrl}/order/payment`,
                                 {
                                     token: payload.nonce,
+                                    // products: productsIds
                                     products: productsIdsQuantity,
-                                    customerData: {
-                                        customer_firstname: customer_name,
-                                        customer_lastname: customer_lastname,
-                                        customer_email: customer_email,
-                                        customer_address: customer_address,
-                                        customer_tel: customer_tel
-                                    }
+                                    // customerData: {
+                                    //     customer_firstname: customer_name,
+                                    //     customer_lastname: customer_lastname,
+                                    //     customer_email: customer_email,
+                                    //     customer_address: customer_address,
+                                    //     customer_tel: customer_tel
+                                    // }
                                 }
                             ).then((res) => {
                                 const message = document.querySelector('#payment-message');
