@@ -1,4 +1,5 @@
 import {reactive} from 'vue';
+import axios from 'axios';
 
 export const store = reactive({
     apiBaseUrl: 'http://127.0.0.1:8000/api',
@@ -8,7 +9,19 @@ export const store = reactive({
     openCart: false,
     shoppingCart: [],
     cartData: [],
+    restaurant: {},
+    infoRestaurant(){
+        if(this.cartData.length){
 
+            axios.get(`${this.apiBaseUrl}/restaurant/${this.cartData[0].restaurant_id}`).then((response) => {
+                console.log(response);
+                this.restaurant = response.data.results;
+                console.log(this.restaurant);
+              })
+
+        }
+          
+        },
     menuItems: [
         {
             label: 'Home',

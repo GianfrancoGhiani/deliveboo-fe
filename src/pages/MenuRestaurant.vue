@@ -56,7 +56,7 @@ export default {
                 this.currentPage = response.data.results.current_page;
                 this.lastPage = response.data.results.last_page;
                 this.total = response.data.results.total;
-                console.log(response)
+                // console.log(response)
             });
         },
     },

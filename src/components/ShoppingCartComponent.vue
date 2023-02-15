@@ -6,6 +6,7 @@
       </div>
       <h4 class="yellowButton">Shopping Cart</h4>
       <div class="product_list mt-5">
+        <h5 v-if="store.restaurant"> {{ store.restaurant.name }}</h5>
         <div class="cart_item d-flex py-3 justify-content-between align-items-center"
           v-for="(cartItem, index) in store.cartData" :key="index">
           <div class="d-flex align-items-center ">
@@ -32,12 +33,14 @@
 </template>
 
 <script>
+import axios from "axios";
 import { store } from "../store";
 export default {
   name: "ShoppingCartComponent",
   data() {
     return {
-      store
+      store,
+
     };
   },
   methods: {
@@ -52,7 +55,8 @@ export default {
       localStorage.clear();
       this.$router.go(0)
       store.openCart = false;
-    }
+    },
+
 
   },
   computed: {
@@ -62,7 +66,9 @@ export default {
 
   },
   mounted() {
-
+    console.log(this.restaurantId);
+    // console.log(this.restaurant);
+    // this.setRestaurantId();
   }
 };
 </script>

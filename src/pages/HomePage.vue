@@ -4,7 +4,7 @@
 
     <div class="container mt-5 mb-5">
         <!-- <CarouselComponent></CarouselComponent> -->
-       
+
         <h2 class="text-center m-4">Choose your restaurant</h2>
 
         <div v-if="types" class="text-center">
@@ -24,7 +24,7 @@
                 <CardComponent :restaurant="restaurant"></CardComponent>
             </div>
         </div>
-        
+
         <ReviewCarousel></ReviewCarousel>
         <CarouselBrandComponent></CarouselBrandComponent>
     </div>
@@ -61,7 +61,7 @@ export default {
                 this.restaurants = response.data.results.restaurants;
                 this.types = response.data.results.types;
 
-                console.log(response)
+                // console.log(response)
             });
         },
         showRestaurant(restaurant) {
@@ -94,5 +94,4 @@ h2 {
     color: $orange;
     text-transform: capitalize;
 }
-
 </style>
