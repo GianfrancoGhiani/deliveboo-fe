@@ -46,6 +46,7 @@ export default {
   mounted() {
     const cartData = localStorage.getItem('cart');
     store.cartData = cartData ? JSON.parse(cartData) : [];
+    store.infoRestaurant();
   }
 }
 </script>
