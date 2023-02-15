@@ -8,9 +8,8 @@
             </div>
 
 
-            <Carousel class="cars" :items-to-show="3" :wrap-around="true" autoplay="4000">
+            <Carousel class="cars" :wrap-around="true" :autoplay="4000" :settings="settings" :breakpoints="breakpoints">
                 <Slide v-for="slide in store.carouselcard" :key="slide">
-
                     <div class=" text-start mx-3 bg-transparent px-5 pb-5 rounded-3">
                         <h4>{{ slide.title }}</h4>
                         <p class="slide-content">{{ slide.content }}</p>
@@ -18,8 +17,6 @@
                             <p class="mb-0 ms-3 text-capitalize text-white">{{ slide.name }}</p>
                         </div>
                     </div>
-
-
                 </Slide>
 
                 <template #addons>
@@ -43,8 +40,25 @@ export default {
     name: 'ReviewCarousel',
     data() {
         return {
-            store
-
+            store,
+            settings: {
+                itemsToShow: 1,
+                snapAlign: 'center',
+            },
+            // breakpoints are mobile first
+            // any settings not specified will fallback to the carousel settings
+            breakpoints: {
+                // 700px and up
+                700: {
+                    itemsToShow: 2,
+                    snapAlign: 'center',
+                },
+                // 1024 and up
+                1024: {
+                    itemsToShow: 3,
+                    snapAlign: 'start',
+                },
+            },
         }
     },
     components: {
@@ -52,7 +66,24 @@ export default {
         Slide,
         Pagination,
         Navigation,
+    },
+    computed: {
+    numItemsToShow() {
+      return this.$mq.matches ? 1 : 3;
     }
+    },
+    mounted() {
+    this.$mq = window.matchMedia("(max-width: 768px)");
+    this.$mq.addListener(this.onMediaQueryChanged);
+    },
+    beforeDestroy() {
+    this.$mq.removeListener(this.onMediaQueryChanged);
+    },
+    methods: {
+        onMediaQueryChanged() {
+        this.$forceUpdate();
+    }
+  }
 }
 
 </script>
@@ -112,13 +143,6 @@ h4 {
 
 .carousel__slide--prev {
     opacity: 0.5;
-}
-
-@media screen and (max-width: 992px){
-    .cars{
-        item-to-show:2;
-    }
-    
 }
 
 </style>
