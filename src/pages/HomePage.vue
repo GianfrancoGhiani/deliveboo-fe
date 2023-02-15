@@ -13,7 +13,7 @@
         <label class="form-check-label" for="flexSwitchCheckDefault">{{ type.name }}</label>
       </div>
       <div class="mt-3">
-        <button @click="getRestaurant" class="btn mybtn">Get restaurant</button>
+        <button @click="getRestaurant" class="btn mybtn">Find Restaurant</button>
       </div>
     </div>
 
