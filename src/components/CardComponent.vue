@@ -15,8 +15,10 @@
 
           <div class="tile">
             <img :src="`${store.imagBasePath}${restaurant.image_url}`" />
-            <div class="text">
+            <div>
               <h1>{{ restaurant.name }}</h1>
+            </div>
+            <div class="text">
               <h2 class="animate-text text-capitalize">{{ restaurant.address }}</h2>
               <p class="animate-text text-capitalize">{{ restaurant.tel_num }}</p>
               <p v-for="(type, index) in restaurant.types" class="animate-text text-capitalize">{{ type.name }}</p>
@@ -65,7 +67,7 @@ body {
   width: 380px;
   height: 300px;
   margin: 10px;
-  background-color: #99aeff;
+  background-color: #30364e;
   display: inline-block;
   background-size: cover;
   position: relative;
@@ -192,6 +194,4 @@ h1 {
 .text {
   overflow-y: auto;
 }
-
-
 </style>
