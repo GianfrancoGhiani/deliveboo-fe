@@ -10,7 +10,6 @@
 
             <Carousel class="cars" :wrap-around="true" :autoplay="4000" :settings="settings" :breakpoints="breakpoints">
                 <Slide v-for="slide in store.carouselcard" :key="slide">
-
                     <div class=" text-start mx-3 bg-transparent px-5 pb-5 rounded-3">
                         <h4>{{ slide.title }}</h4>
                         <p class="slide-content">{{ slide.content }}</p>
@@ -18,8 +17,6 @@
                             <p class="mb-0 ms-3 text-capitalize text-white">{{ slide.name }}</p>
                         </div>
                     </div>
-
-
                 </Slide>
 
                 <template #addons>
@@ -69,7 +66,24 @@ export default {
         Slide,
         Pagination,
         Navigation,
+    },
+    computed: {
+    numItemsToShow() {
+      return this.$mq.matches ? 1 : 3;
     }
+    },
+    mounted() {
+    this.$mq = window.matchMedia("(max-width: 768px)");
+    this.$mq.addListener(this.onMediaQueryChanged);
+    },
+    beforeDestroy() {
+    this.$mq.removeListener(this.onMediaQueryChanged);
+    },
+    methods: {
+        onMediaQueryChanged() {
+        this.$forceUpdate();
+    }
+  }
 }
 
 </script>
@@ -131,16 +145,4 @@ h4 {
     opacity: 0.5;
 }
 
-@media only screen and (max-width: 767px) {
-    .cars {
-        items-to-show: 1;
-    }
-}
-
-/* Media query per tablet */
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-    .cars {
-        items-to-show: 2;
-    }
-}
 </style>
