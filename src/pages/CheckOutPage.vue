@@ -155,7 +155,7 @@ export default {
                                 if (res.data.success) {
                                     message.classList.add('alert', 'alert-success', 'mb-3', 'mt-3');
                                     localStorage.clear();
-                                    //setTimeout(() => { location.replace("/"); }, 600)
+                                    setTimeout(() => { location.replace("/"); }, 1000);
 
                                 } else {
                                     message.classList.add('alert', 'alert-danger', 'mb-3', 'mt-3');
