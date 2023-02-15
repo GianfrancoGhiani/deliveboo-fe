@@ -1,7 +1,7 @@
 <template>
     <div class="py-5">
         <h2 class="text-center mt-4">Some of the brand that choose us</h2>
-        <carousel :itemsToShow="8" :wrapAround="true" :transition="1000" :autoplay="1500">
+        <carousel :itemsToShow="4" :wrapAround="true" :transition="1000" :autoplay="1500">
             <slide v-for="(slide, index) in homePaths" :key="index">
                 <div class="mt-2">
                     <img class="carousel__item" :src="slide.path" :alt="slide.alt">
@@ -129,9 +129,27 @@ export default {
                     alt: 'Vicio',
                     id: 19,
                 },
+
             ],
         }
+    },
+    computed: {
+    numItemsToShow() {
+      return this.$mq.matches ? 1 : 8;
     }
+  },
+  mounted() {
+    this.$mq = window.matchMedia("(max-width: 768px)");
+    this.$mq.addListener(this.onMediaQueryChanged);
+  },
+  beforeDestroy() {
+    this.$mq.removeListener(this.onMediaQueryChanged);
+  },
+  methods: {
+    onMediaQueryChanged() {
+      this.$forceUpdate();
+    }
+  }
 }
 </script>
 
