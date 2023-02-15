@@ -18,7 +18,7 @@
         <p class="prezzo">${{ product.price }}</p>
       </div>
 
-      <a class="btn mybtn" @click="addtoCart()"><b>Order it</b> </a>
+      <a class="btn mybtn" @click="addtoCart()"><b>Add to Cart</b> </a>
     </div>
   </div>
 </template>
@@ -39,6 +39,7 @@ export default {
   methods: {
     addtoCart() {
 
+
       //se cè qualcosa nel carrello 
       if (store.cartData.length) {
 
@@ -50,7 +51,22 @@ export default {
 
           //controllo che sia lo stesso prodotto
           let cartItem = store.cartData.find(i => i.id === this.singleProduct.id);
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
 
+          Toast.fire({
+            icon: 'success',
+            title: `${this.product.name} add with success`
+          })
           //se è lo stesso prodotto aumento solo la quantità
           if (cartItem) {
             cartItem.quantity++
@@ -69,10 +85,32 @@ export default {
           localStorage.setItem('cart', JSON.stringify(store.cartData));
           // console.log(cartItem);
 
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'You can\'t add product before to complete the order!',
+
+          })
         }
 
       } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+          }
+        })
 
+        Toast.fire({
+          icon: 'success',
+          title: `${this.product.name} add with success`
+        })
         //se non cè niente nel carrello aggiungo il prodotto con default quantity 1
         let defaultquantity = 1;
         store.cartData.push({
@@ -146,9 +184,9 @@ h5 {
   padding: 0 5px;
 }
 
-@media screen and (max-width: 576px){
-      .card-body{
-        text-align: center;
-      }
+@media screen and (max-width: 576px) {
+  .card-body {
+    text-align: center;
+  }
 }
 </style>
