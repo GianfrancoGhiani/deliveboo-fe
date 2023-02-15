@@ -2,28 +2,36 @@
     <div id="checkout" class="d-flex flex-column align-items-center">
 
 
-        <div class="w-auto p-5">
-            <div class="">
-                <div>
-                    <label for="customer_firstname">Name</label>
-                    <input type="text" name="customer_firstname" id="customer_firstname">
+        <div class="w-50 p-5 container">
+            <div class="card p-3 mb-3 ">
+                <div class="card-header">
+                    <h1>Customer Data</h1>
                 </div>
-                <div>
-                    <label for="customer_lastname">Surname</label>
-                    <input type="text" name="customer_lastname" id="customer_lastname">
+                <div class="card-body row row-cols-2 ">
+                    <div class="col d-flex flex-column">
+                        <label for="customer_firstname">Name</label>
+                        <input type="text" name="customer_firstname" id="customer_firstname">
+                    </div>
+                    <div class="col d-flex flex-column">
+                        <label for="customer_lastname">Surname</label>
+                        <input type="text" name="customer_lastname" id="customer_lastname">
+                    </div>
+                    <div class="col d-flex flex-column">
+                        <label for="customer_email">Email</label>
+                        <input type="email" name="customer_email" id="customer_email">
+                    </div>
+                    <div class="col row row-cols-2">
+                        <div class="col d-flex flex-column">
+                            <label for="customer_address">Address</label>
+                            <input type="text" name="customer_address" id="customer_address">
+                        </div>
+                        <div class="col d-flex flex-column">
+                            <label for="customer_tel">Mobile Number</label>
+                            <input type="text" name="customer_tel" id="customer_tel">
+                        </div>
+                    </div>
                 </div>
-                <div>
-                    <label for="customer_email">Email</label>
-                    <input type="email" name="customer_email" id="customer_email">
-                </div>
-                <div>
-                    <label for="customer_address">Address</label>
-                    <input type="text" name="customer_address" id="customer_address">
-                </div>
-                <div>
-                    <label for="customer_tel">Telephone Number</label>
-                    <input type="text" name="customer_tel" id="customer_tel">
-                </div>
+
 
             </div>
             <div id="dropin-wrapper">
@@ -106,25 +114,42 @@ export default {
                         button.setAttribute("disabled", true);
                         button.innerHTML = 'Loading...';
                         instance.requestPaymentMethod(function (err, payload) {
+                            const customer_name = document.querySelector('#customer_firstname').value;
+                            const customer_lastname = document.querySelector('#customer_lastname').value;
+                            const customer_email = document.querySelector('#customer_email').value;
+                            const customer_address = document.querySelector('#customer_address').value;
+                            const customer_tel = document.querySelector('#customer_tel').value;
+
 
                             const productsArray = JSON.parse(localStorage.getItem('cart'));
-                            let productsIds = [];
+                            let productsIdsQuantity = [];
                             productsArray.forEach(element => {
-                                productsIds.push(element.id);
+                                const prod = {
+                                    id: element.id,
+                                    q: element.quantity
+                                }
+                                productsIdsQuantity.push({ ...prod });
                             });
 
-                            console.log(payload.nonce)
+                            console.log(productsIdsQuantity)
                             axios.post(`${store.apiBaseUrl}/order/payment`,
                                 {
                                     token: payload.nonce,
-                                    products: productsIds
+                                    products: productsIdsQuantity,
+                                    customerData: {
+                                        customer_firstname: customer_name,
+                                        customer_lastname: customer_lastname,
+                                        customer_email: customer_email,
+                                        customer_address: customer_address,
+                                        customer_tel: customer_tel
+                                    }
                                 }
                             ).then((res) => {
                                 const message = document.querySelector('#payment-message');
                                 if (res.data.success) {
                                     message.classList.add('alert', 'alert-success', 'mb-3', 'mt-3');
                                     localStorage.clear();
-                                    // setTimeout(() => { location.replace("/"); }, 600)
+                                    //setTimeout(() => { location.replace("/"); }, 600)
 
                                 } else {
                                     message.classList.add('alert', 'alert-danger', 'mb-3', 'mt-3');
@@ -148,4 +173,29 @@ export default {
 
 <style lang="scss" scoped>
 @use '../assets/styles/partials/variables' as *;
+
+#checkout {
+    h1 {
+        &::first-letter {
+            color: $orange;
+        }
+    }
+
+    .card {
+        border: 1px solid $white;
+    }
+
+    label {
+        font-size: 14px;
+        font-weight: 600;
+
+        &::first-letter {
+            color: $orange;
+        }
+    }
+
+    .card {
+        background-color: $dark-gray;
+    }
+}
 </style>
