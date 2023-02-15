@@ -18,12 +18,13 @@
         <p class="prezzo">${{ product.price }}</p>
       </div>
 
-      <a href="#" class="btn mybtn" @click="addtoCart()"><b>Order it</b> </a>
+      <a class="btn mybtn" @click="addtoCart()"><b>Order it</b> </a>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios';
 import { store } from '../store';
 export default {
   name: 'MenuCard',
@@ -32,22 +33,59 @@ export default {
       store,
       singleProduct: this.product,
       contentMaxLen: 15,
+
     }
   },
   methods: {
     addtoCart() {
-      let defaultquantity = 1;
-      let cartItem = store.cartData.find(i => i.id === this.singleProduct.id);
-      if (cartItem) {
-        cartItem.quantity++
+
+      //se cè qualcosa nel carrello 
+      if (store.cartData.length) {
+
+        // e se il prodotto che aggiungiamo ha lo stesso id del ristorante del primo già aggiunto
+        if (this.product.restaurant_id == store.cartData[0].restaurant_id) {
+
+          //imposto quantità
+          let defaultquantity = 1;
+
+          //controllo che sia lo stesso prodotto
+          let cartItem = store.cartData.find(i => i.id === this.singleProduct.id);
+
+          //se è lo stesso prodotto aumento solo la quantità
+          if (cartItem) {
+            cartItem.quantity++
+
+
+          } else {
+
+            //altrimenti pusho il nuovo prodotto con la quantià di default 1
+            store.cartData.push({
+              ...this.singleProduct,
+              quantity: defaultquantity
+            })
+          }
+
+          //salvo tutto nel localstorage 
+          localStorage.setItem('cart', JSON.stringify(store.cartData));
+          // console.log(cartItem);
+
+        }
+
       } else {
+
+        //se non cè niente nel carrello aggiungo il prodotto con default quantity 1
+        let defaultquantity = 1;
         store.cartData.push({
           ...this.singleProduct,
           quantity: defaultquantity
-        })
+        });
+
+        //chiamo la funzione per avere informazioni del ristorante
+        store.infoRestaurant();
+
+        //salvo il carrello 
+        localStorage.setItem('cart', JSON.stringify(store.cartData));
       }
-      localStorage.setItem('cart', JSON.stringify(store.cartData));
-      console.log(cartItem);
     },
     truncateContent(text) {
       if (text.length > this.contentMaxLen) {

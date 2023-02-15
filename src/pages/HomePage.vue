@@ -7,32 +7,20 @@
     <h2 class="text-center m-4">Choose your restaurant</h2>
 
     <div v-if="types" class="text-center">
-      <div
-        class="form-check form-check-inline"
-        v-for="(type, index) in types"
-        :key="index"
-      >
-        <input
-          name="types"
-          class="form-check-input"
-          type="radio"
-          id="flexSwitchCheckDefault"
-          @click="selectedType = type.id"
-          value="{{ type.id }}"
-        />
-        <label class="form-check-label" for="flexSwitchCheckDefault">{{
-          type.name
-        }}</label>
+      <div class="form-check form-check-inline" v-for="(type, index) in types" :key="index">
+        <input name="types" class="form-check-input" type="radio" id="flexSwitchCheckDefault"
+          @click="selectedType = type.id" value="{{ type.id }}">
+        <label class="form-check-label" for="flexSwitchCheckDefault">{{ type.name }}</label>
       </div>
       <div class="mt-3">
-        <button @click="getRestaurant" class="btn mybtn">Choose your restaurant</button>
+        <button @click="getRestaurant" class="btn mybtn">Get restaurant</button>
       </div>
     </div>
-    <div class="d-flex justify-content-center">
-      <div v-if="restaurants" class="row row-col-lg-3">
-        <div class="col" v-for="restaurant in restaurants" @click="">
-          <CardComponent :restaurant="restaurant"></CardComponent>
-        </div>
+
+    <div v-if="restaurants" class="row row-cols-3">
+
+      <div class="col" v-for="restaurant in restaurants" @click="">
+        <CardComponent :restaurant="restaurant"></CardComponent>
       </div>
     </div>
 
@@ -76,17 +64,17 @@ export default {
           this.restaurants = response.data.results.restaurants;
           this.types = response.data.results.types;
 
-          console.log(response);
+          console.log(response)
         });
     },
     showRestaurant(restaurant) {
       this.selectedRestaurant = restaurant;
-    },
+    }
   },
   mounted() {
     this.getRestaurant();
-  },
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>
