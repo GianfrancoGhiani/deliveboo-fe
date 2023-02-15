@@ -1,7 +1,9 @@
 <template>
-    <div class="">
+    <div class="container-sm containerVideo">
       <video src="public/video/production ID_4170500.mp4" autoplay muted loop class="w-100"></video>
     </div>
+
+
 </template>
 
 <script>
@@ -18,8 +20,9 @@ img{
     position: top;
 }
 video{
-    height: 300px;
     width: 100%;
     object-fit: fill;
 }
+
+
 </style>

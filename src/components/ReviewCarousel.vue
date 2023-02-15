@@ -8,16 +8,13 @@
             </div>
 
 
-            <Carousel class=" cars" :items-to-show="3" :wrap-around="true" autoplay="4000">
+            <Carousel class="cars" :items-to-show="3" :wrap-around="true" autoplay="4000">
                 <Slide v-for="slide in store.carouselcard" :key="slide">
 
                     <div class=" text-start mx-3 bg-transparent px-5 pb-5 rounded-3">
                         <h4>{{ slide.title }}</h4>
                         <p class="slide-content">{{ slide.content }}</p>
                         <div class="d-flex mt-2  align-items-center">
-                            <div class=" overflow-hidden img-cont">
-                                <img :src="`/img/testimonial-avata-${slide.pic}.jpg`" alt="">
-                            </div>
                             <p class="mb-0 ms-3 text-capitalize text-white">{{ slide.name }}</p>
                         </div>
                     </div>
@@ -116,4 +113,12 @@ h4 {
 .carousel__slide--prev {
     opacity: 0.5;
 }
+
+@media screen and (max-width: 992px){
+    .cars{
+        item-to-show:2;
+    }
+    
+}
+
 </style>
