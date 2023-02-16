@@ -29,7 +29,9 @@
               <h5 class="colorName text-capitalize">{{ cartItem.name }}</h5>
 
               <!-- prezzo prodotto -->
-              <p>$ {{ cartItem.price_sign }}{{ cartItem.price }}</p>
+              <p><span :class="{ 'text-decoration-line-through': (cartItem.discount != 0) }">$ {{
+                cartItem.price }}</span> <span v-if="cartItem.discount != 0"> $ {{ (cartItem.price - ((cartItem.price /
+    100) * cartItem.discount)).toFixed(2) }}</span></p>
 
               <!-- bottone -   -->
               <button @click="decreaseQuantity(cartItem)" class="btn btn-link px-2" v-if="store.cartVisibility">
@@ -71,13 +73,6 @@
 </template>
 
 <script>
-
-
-
-
-
-
-
 import axios from "axios";
 import { store } from "../store";
 export default {
@@ -116,7 +111,7 @@ export default {
   },
   computed: {
     cartTotal() {
-      return store.cartData.reduce((a, b) => a + b.price * b.quantity, 0);
+      return store.cartData.reduce((a, b) => a + ((b.price - ((b.price / 100) * b.discount)) * b.quantity), 0);
     },
 
   },
