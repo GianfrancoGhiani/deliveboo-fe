@@ -8,28 +8,31 @@
 
     <div v-if="types" class="text-center">
       <div class="form-check form-check-inline" v-for="(type, index) in types" :key="index">
-        <input name="types[]" class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
-          @change="toggleType()" :value="type.id">
-        <label class="form-check-label" for="flexSwitchCheckDefault">{{ type.name }}</label>
+        <input name="types[]" class="form-check-input" type="checkbox" :id="`type-${type.id}`" @change="toggleType()"
+          :value="type.id">
+        <label class="form-check-label" :for="`type-${type.id}`">{{ type.name }}</label>
       </div>
       <div class="mt-3">
         <button @click="getRestaurant" class="btn mybtn">Find Restaurant</button>
       </div>
     </div>
-<div class="d-flex justify-content-center">
-    <div v-if="restaurants" class="row row-col-lg-3">
+    <div class="d-flex justify-content-center">
+      <div v-if="restaurants" class="row row-col-lg-3">
 
-      <div class="col" v-for="restaurant in restaurants" @click="">
-        <CardComponent :restaurant="restaurant"></CardComponent>
+        <div class="col" v-for="restaurant in restaurants" @click="">
+          <CardComponent :restaurant="restaurant"></CardComponent>
+        </div>
       </div>
     </div>
-  </div>
     <ReviewCarousel></ReviewCarousel>
     <CarouselBrandComponent></CarouselBrandComponent>
-  </div>
+</div>
 </template>
 
 <script>
+
+
+
 import axios from "axios";
 import { store } from "../store";
 import CarouselComponent from "../components/CarouselComponent.vue";

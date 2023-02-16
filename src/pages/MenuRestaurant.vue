@@ -8,13 +8,16 @@
         <div class="justify-content-center d-flex">
             <nav aria-label="Page navigation example ">
                 <ul class="pagination mt-5">
+
                     <li class="page-item " :class="{ 'disabled': currentPage === 1 }">
                         <a class="page-link" @click="getProducts(currentPage - 1)"
                             :disabled="currentPage === 1">Previous</a>
                     </li>
+
                     <li class="page-item" :class="{ 'disabled': currentPage === n }" v-for="n in lastPage">
                         <a class="page-link" @click="getProducts(n)" :disabled="currentPage === n">{{ n }}</a>
                     </li>
+
                     <li class="page-item" :class="{ 'disabled': currentPage === lastPage }">
                         <a class="page-link" @click="getProducts(currentPage + 1)"
                             :disabled="currentPage === lastPage">Next</a>

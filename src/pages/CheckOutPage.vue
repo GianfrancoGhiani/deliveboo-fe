@@ -7,30 +7,31 @@
                 <div class="card-header">
                     <h1>Customer Data</h1>
                 </div>
-                <div class="card-body row row-cols-2 ">
+                <form @submit.prevent id="form" class="card-body row row-cols-2 ">
                     <div class="col d-flex flex-column">
                         <label for="customer_firstname">Name</label>
-                        <input type="text" name="customer_firstname" id="customer_firstname">
+                        <input type="text" name="customer_firstname" id="customer_firstname" required>
                     </div>
                     <div class="col d-flex flex-column">
                         <label for="customer_lastname">Surname</label>
-                        <input type="text" name="customer_lastname" id="customer_lastname">
+                        <input type="text" name="customer_lastname" id="customer_lastname" required>
                     </div>
                     <div class="col d-flex flex-column">
                         <label for="customer_email">Email</label>
-                        <input type="email" name="customer_email" id="customer_email">
+                        <input type="email" name="customer_email" id="customer_email" required>
                     </div>
                     <div class="col row row-cols-2">
                         <div class="col d-flex flex-column">
                             <label for="customer_address">Address</label>
-                            <input type="text" name="customer_address" id="customer_address">
+                            <input type="text" name="customer_address" id="customer_address" required>
                         </div>
                         <div class="col d-flex flex-column">
                             <label for="customer_tel">Mobile Number</label>
-                            <input type="text" name="customer_tel" id="customer_tel">
+                            <input type="text" name="customer_tel" id="customer_tel" required>
                         </div>
                     </div>
-                </div>
+                    <button type="submit" hidden id="customer-validator"></button>
+                </form>
 
 
             </div>
@@ -45,11 +46,10 @@
 
 
 
-    </div>
+</div>
 </template>
 
 <script>
-
 import axios from 'axios';
 import { store } from '../store';
 
@@ -69,6 +69,8 @@ export default {
 
     },
     mounted() {
+        store.cartVisibility = false;
+        store.openCart = true;
         this.getToken();
 
     }
@@ -86,7 +88,7 @@ export default {
                 this.apiToken = res.data.token;
 
                 var button = document.querySelector('#submit-button');
-
+                var customerBtn = document.querySelector('#customer-validator');
                 braintree.dropin.create({
                     authorization: this.apiToken,
                     selector: '#dropin-container',
@@ -111,9 +113,15 @@ export default {
                     }
                 }, function (err, instance) {
                     button.addEventListener('click', function () {
-                        button.setAttribute("disabled", true);
-                        button.innerHTML = 'Loading...';
+                        customerBtn.click();
+                        console.log
                         instance.requestPaymentMethod(function (err, payload) {
+                            button.setAttribute("disabled", true);
+                            button.innerHTML = 'Loading...';
+                            if (err) {
+                                button.removeAttribute("disabled");
+                                button.innerHTML = 'Submit payment';
+                            }
                             const customer_name = document.querySelector('#customer_firstname').value;
                             const customer_lastname = document.querySelector('#customer_lastname').value;
                             const customer_email = document.querySelector('#customer_email').value;
@@ -145,10 +153,13 @@ export default {
                                     }
                                 }
                             ).then((res) => {
+                                button.setAttribute("disabled", true);
+                                button.innerHTML = 'Loading...';
                                 const message = document.querySelector('#payment-message');
                                 if (res.data.success) {
                                     message.classList.add('alert', 'alert-success', 'mb-3', 'mt-3');
                                     localStorage.clear();
+                                    store.cartVisbility = true;
                                     setTimeout(() => { location.replace("/"); }, 1000);
 
                                 } else {
