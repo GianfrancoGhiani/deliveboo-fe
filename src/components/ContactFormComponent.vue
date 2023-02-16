@@ -4,10 +4,12 @@
             <div class="container-fluid text-center">
 
 
-                <h1 class="text-uppercase text-white fw-bold m-5">contact us</h1> 
-                <h4>Questions? Contact now our support team and we'll answer you as soon as possible</h4>
-                <div v-if="success" class="alert alert-success text-start" role="alert">
-                    The message has been successfully sent!
+                <div class="d-flex flex-column align-items-center">
+                    <h1 class="text-uppercase text-white fw-bold m-5">contact us</h1>
+                    <h4>Questions? Contact now our support team and we'll answer you as soon as possible</h4>
+                    <div v-if="success" class="alert alert-success text-start" role="alert">
+                        The message has been successfully sent!
+                    </div>
                 </div>
                 <div class="d-flex justify-content-center">
                     <div class="contactform row w-50 m-5">
@@ -30,17 +32,17 @@
 
                             </div>
                             <div class="mb-5">
-                                <textarea class="border border-light text-white bg-transparent form-control"
-                                    name="message" id="message" cols="30" rows="10" placeholder="Message"
-                                    v-model="message" :class="{ 'is-invalid': errors.message }" required></textarea>
+                                <textarea class="border border-light text-white bg-transparent form-control" name="message"
+                                    id="message" cols="30" rows="10" placeholder="Message" v-model="message"
+                                    :class="{ 'is-invalid': errors.message }" required></textarea>
                                 <p v-for="(error, index) in errors.message" :key="index" class="invalid-feedback">
                                     {{ error }}
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mt-5 mb-3">
                                 <button class="mail text-white w-25 " type="submit" :disabled="loading">{{
-                                    loading?
-                                'Sending...': 'Send'
+                                    loading ?
+                                    'Sending...' : 'Send'
                                 }}</button>
                             </div>
                         </form>
@@ -54,7 +56,7 @@
                 class="w-100" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-    </section>
+</section>
 </template>
 
 <script>
@@ -160,6 +162,6 @@ export default {
 @media screen and (max-width: 600px) {
     .w-50 {
         min-width: 100%;
-  }
+    }
 }
 </style>

@@ -49,6 +49,7 @@ export default {
   mounted() {
     const cartData = localStorage.getItem('cart');
     store.cartData = cartData ? JSON.parse(cartData) : [];
+    console.log(store.cartData)
     store.infoRestaurant();
   }
 }
@@ -123,7 +124,8 @@ export default {
   bottom: -15px;
   left: -15px;
 }
-.margin{
+
+.margin {
   margin-top: 3.5rem;
 }
 </style>
