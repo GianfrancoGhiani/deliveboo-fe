@@ -2,7 +2,7 @@
   <header>
     <HeaderComponent />
   </header>
-  <div>
+  <div class="margin">
     <router-view></router-view>
   </div>
   <div class="aside_menu_shop">
@@ -119,5 +119,8 @@ export default {
   position: absolute;
   bottom: -15px;
   left: -15px;
+}
+.margin{
+  margin-top: 3.5rem;
 }
 </style>
