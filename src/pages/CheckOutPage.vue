@@ -30,7 +30,7 @@
                             <input type="text" name="customer_tel" id="customer_tel" required>
                         </div>
                     </div>
-                    <button type="submit" hidden id="customer-validator"></button>
+                    <button hidden id="customer-validator"></button>
                 </form>
 
 
@@ -113,8 +113,8 @@ export default {
                     }
                 }, function (err, instance) {
                     button.addEventListener('click', function () {
-                        customerBtn.click();
-                        console.log
+                        customerBtn.click().submit();
+
                         instance.requestPaymentMethod(function (err, payload) {
                             button.setAttribute("disabled", true);
                             button.innerHTML = 'Loading...';
