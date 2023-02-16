@@ -63,7 +63,7 @@
                 team: [
                     {
                         name: 'Simone',
-                        image: 'https://avatars.githubusercontent.com/u/98409091?v=4',
+                        image: 'https://ca.slack-edge.com/T91QPE3BP-U03UYJJFYAE-bfa2acc254ac-512',
                         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempora enim pariatur saepe illo impedit?',
                         qualification:'Full Stack Developer',
                         github: 'https://github.com/BarrioTropical',
@@ -84,7 +84,7 @@
                     },
                     {
                         name: 'Gianfranco',
-                        image: 'https://avatars.githubusercontent.com/u/13931076?v=4',
+                        image: 'https://avatars.githubusercontent.com/u/108810086?v=4',
                         description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempora enim pariatur saepe illo impedit?',
                         qualification:'Full Stack Developer',
                         github: 'https://github.com/gianfrancoghiani',
@@ -123,7 +123,7 @@ section {
             border-radius: 0;
             transition: 0.3s;
             perspective: 1000px;
-            height: 500px;
+            height: 550px;
             border: none;
             
             &:hover .card-content {
