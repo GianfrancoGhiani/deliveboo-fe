@@ -7,11 +7,15 @@
     <a href="#" class="btn btn-primary">Order it</a>
   </div>
 </div>  -->
+
+
   <div class="containter-sm col-12 col-xl-3 col-lg-4 col-md-6 col-sm-12">
     <div class="card cardMenu border-warning mt-4 p-2">
+
       <router-link :to="{ name: 'show', params: { id: product.id, slug: product.slug } }">
         <img class="card-img-top" :src="`${store.imagBasePath}${product.image_url}`" alt="Card image cap">
       </router-link>
+
       <div class="card-body">
         <h5 class="card-title text-capitalize">{{ truncateContent(product.name) }}</h5>
         <p class="card-text text-capitalize mt-3">{{ product.ingredients }}</p>
@@ -32,7 +36,7 @@ export default {
     return {
       store,
       singleProduct: this.product,
-      contentMaxLen: 15,
+      contentMaxLen: 23,
 
     }
   },
@@ -51,6 +55,8 @@ export default {
 
           //controllo che sia lo stesso prodotto
           let cartItem = store.cartData.find(i => i.id === this.singleProduct.id);
+
+          //modale di conferma 
           const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -67,6 +73,7 @@ export default {
             icon: 'success',
             title: `${this.product.name} add with success`
           })
+
           //se è lo stesso prodotto aumento solo la quantità
           if (cartItem) {
             cartItem.quantity++
@@ -86,12 +93,41 @@ export default {
           // console.log(cartItem);
 
         } else {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'You can\'t add product before to complete the order!',
+          const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+              confirmButton: 'btn btn-success',
+              cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
 
           })
+
+          swalWithBootstrapButtons.fire({
+            icon: 'warning',
+            iconColor: '#f00',
+            title: 'Oops...',
+            // showDenyButton: true,
+            color: 'black',
+            background: '#fb1f',
+            text: 'You can\'t add this product, you must first complete the order or empty the cart',
+            text: 'You can\'t add this product, you must first complete the order or empty the cart',
+            footer: '<a href="/payment">Complete your order? Go To Checkout</a>',
+            confirmButtonColor: '#f61',
+            confirmButtonText:
+              '<i class="fa fa-thumbs-up"></i> Great!',
+            cancelButtonColor: '#d33',
+            cancelButtonText: 'Yes, delete it!'
+            // denyButtonText: `<i class="fa fa-thumbs-down"></i>`
+
+          })
+          // .then((result) => {
+          //   /* Read more about isConfirmed, isDenied below */
+          //   if (result.isConfirmed) {
+          //     Swal.fire('Saved!', '', 'success')
+          //   } else if (result.isDenied) {
+          //     Swal.fire('Changes are not saved', '', 'info')
+          //   }
+          // })
         }
 
       } else {
