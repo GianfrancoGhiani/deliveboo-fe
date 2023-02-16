@@ -45,10 +45,26 @@
 
 
 
-    </div>
+</div>
 </template>
 
 <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 import axios from 'axios';
 import { store } from '../store';
@@ -69,6 +85,8 @@ export default {
 
     },
     mounted() {
+        store.cartVisibility = false;
+        store.openCart = true;
         this.getToken();
 
     }
@@ -114,6 +132,10 @@ export default {
                         button.setAttribute("disabled", true);
                         button.innerHTML = 'Loading...';
                         instance.requestPaymentMethod(function (err, payload) {
+                            if (err) {
+                                button.removeAttribute("disabled");
+                                button.innerHTML = 'Submit payment';
+                            }
                             const customer_name = document.querySelector('#customer_firstname').value;
                             const customer_lastname = document.querySelector('#customer_lastname').value;
                             const customer_email = document.querySelector('#customer_email').value;
@@ -145,10 +167,13 @@ export default {
                                     }
                                 }
                             ).then((res) => {
+                                button.setAttribute("disabled", true);
+                                button.innerHTML = 'Loading...';
                                 const message = document.querySelector('#payment-message');
                                 if (res.data.success) {
                                     message.classList.add('alert', 'alert-success', 'mb-3', 'mt-3');
                                     localStorage.clear();
+                                    store.cartVisbility = true;
                                     setTimeout(() => { location.replace("/"); }, 1000);
 
                                 } else {

@@ -17,10 +17,13 @@
     <ShoppingCartComponent v-if="store.openCart" />
   </Transition>
 
-  <FooterComponent />
+<FooterComponent />
 </template>
 
 <script>
+
+
+
 import { store } from './store';
 import HeaderComponent from './components/HeaderComponent.vue';
 import FooterComponent from './components/FooterComponent.vue';

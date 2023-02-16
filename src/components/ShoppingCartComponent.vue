@@ -32,7 +32,7 @@
               <p>$ {{ cartItem.price_sign }}{{ cartItem.price }}</p>
 
               <!-- bottone -   -->
-              <button @click="decreaseQuantity(cartItem)" class="btn btn-link px-2">
+              <button @click="decreaseQuantity(cartItem)" class="btn btn-link px-2" v-if="store.cartVisibility">
                 <i class="fas fa-minus"></i>
               </button>
 
@@ -40,7 +40,7 @@
               <input type="text" class="w-25 me-2 text-center myinput" v-model="cartItem.quantity" min="1" disabled />
 
               <!-- bottone +  -->
-              <button @click="increaseQuantity(cartItem)" class="btn btn-link px-2">
+              <button @click="increaseQuantity(cartItem)" class="btn btn-link px-2" v-if="store.cartVisibility">
                 <i class="fas fa-plus"></i>
               </button>
 
@@ -51,7 +51,7 @@
           </div>
 
           <!-- icona cestino  -->
-          <span @click="removeFromCart(index)"><i class="fa-solid fa-trash"></i></span>
+          <span @click="removeFromCart(index)" v-if="store.cartVisibility"><i class="fa-solid fa-trash"></i></span>
         </div>
       </div>
 
@@ -61,14 +61,23 @@
         <span class="fs-4">$ {{ this.cartTotal.toFixed(2) }}</span>
       </div>
       <!-- bottone pagamento e svuota carrello -->
-      <button class="btn mybtn mt-2" @click="checkOut()" :disabled="!store.cartData.length">Order it</button>
-      <button class="btn ms-2 mybtn mt-2" @click="clearCart()" :disabled="!store.cartData.length">Clear All</button>
+      <button class="btn mybtn mt-2" @click="checkOut()" :disabled="!store.cartData.length"
+        v-if="store.cartVisibility">Order it</button>
+      <button class="btn ms-2 mybtn mt-2" @click="clearCart()" :disabled="!store.cartData.length"
+        v-if="store.cartVisibility">Clear All</button>
 
     </div>
-  </div>
+</div>
 </template>
 
 <script>
+
+
+
+
+
+
+
 import axios from "axios";
 import { store } from "../store";
 export default {
