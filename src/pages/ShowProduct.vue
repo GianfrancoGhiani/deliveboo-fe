@@ -5,7 +5,8 @@
             <h5 class="card-title mt-2 text-center">{{ product.name }}</h5>
             <h5 class="text-center ingredient">Ingredients:</h5>
             <p class="card-text text-capitalize text-center">{{ product.ingredients }}</p>
-            <button class="btn btn-primary bg-orange w-100" @click="goBack()">Back</button>
+            <button class="btn btn-primary bg-orange w-100" @click="$router.go(-1)">Back</button>
+
         </li>
 </ul>
 </template>
@@ -36,7 +37,8 @@ export default {
         console.log(this.$route.params)
     },
     goBack() {
-        window.history.back()
+        // window.history.back()
+        $router.go(-1)
     }
 }
 </script>
