@@ -1,5 +1,4 @@
-<template>
-  <!-- <h2 class="text-center">Choose your favourite restaurant</h2>
+<template><!-- <h2 class="text-center">Choose your favourite restaurant</h2>
     <div class="card" style="width: 18rem;">
   <img src="../../public/img/jumbo/jumbo-2.jpg" class="card-img-top" alt="...">
   <div class="card-body">
@@ -19,16 +18,21 @@
               <h1>{{ restaurant.name }}</h1>
             </div>
             <div class="text">
-              <h2 class="animate-text text-capitalize">{{ restaurant.address }}</h2>
-              <p class="animate-text text-capitalize">{{ restaurant.tel_num }}</p>
-              <p v-for="(type, index) in restaurant.types" class="animate-text text-capitalize">{{ type.name }}</p>
+              <h3 class="animate-text text-capitalize">Address: {{ restaurant.address }}</h3>
+              <h3 class="animate-text text-capitalize"> Phone: {{ restaurant.tel_num }}</h3>
+              <p class="animate-text text-capitalize"> Opening: {{ restaurant.opening_time }}</p>
+              <p class="animate-text text-capitalize"> Closing: {{ restaurant.closing_time }}</p>
+              <div class="animate-text text-capitalize mt-5">
+              Type:
+                <p v-for="(type, index) in restaurant.types" class="animate-text text-capitalize">{{ type.name }}</p>
+              </div>
             </div>
           </div>
 
         </div>
       </router-link>
     </div>
-  </div>
+</div>
 </template>
 
 
