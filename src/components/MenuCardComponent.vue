@@ -1,5 +1,4 @@
-<template>
-  <!-- <div class="card" style="width: 18rem;">
+<template><!-- <div class="card" style="width: 18rem;">
        <img :src="`${store.imagBasePath}${product.image_url}`" />
   <div class="card-body">
     <h5 class="card-title">{{product.name}}</h5>
@@ -24,7 +23,7 @@
 
       <a class="btn mybtn" @click="addtoCart()"><b>Add to Cart</b> </a>
     </div>
-  </div>
+</div>
 </template>
 
 <script>
@@ -159,6 +158,7 @@ export default {
 
         //salvo il carrello 
         localStorage.setItem('cart', JSON.stringify(store.cartData));
+        console.log(localStorage.getItem('cart'));
       }
     },
     truncateContent(text) {
