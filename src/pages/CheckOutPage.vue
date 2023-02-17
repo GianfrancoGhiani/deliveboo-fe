@@ -8,6 +8,7 @@
                     <h1>Customer Data</h1>
                 </div>
                 <form @submit.prevent id="form" class="card-body row row-cols-2 ">
+
                     <div class="col d-flex flex-column">
                         <label for="customer_firstname">Name</label>
                         <input type="text" name="customer_firstname" id="customer_firstname" required>
@@ -30,7 +31,7 @@
                             <input type="text" name="customer_tel" id="customer_tel" required>
                         </div>
                     </div>
-                    <button hidden id="customer-validator"></button>
+                    <button hidden type="submit" id="customer-validator"></button>
                 </form>
 
 
@@ -58,6 +59,7 @@ export default {
 
     data() {
         return {
+
             apiToken: '',
             message: '',
             dataProductsIds: [],
@@ -84,95 +86,123 @@ export default {
             this.buy()
         },
         getToken() {
+
+            store.openCart = false
             axios.get(`${store.apiBaseUrl}/order`).then((res) => {
                 this.apiToken = res.data.token;
 
                 var button = document.querySelector('#submit-button');
                 var customerBtn = document.querySelector('#customer-validator');
-                braintree.dropin.create({
-                    authorization: this.apiToken,
-                    selector: '#dropin-container',
-                    card: {
-                        overrides: {
-                            styles: {
-                                input: {
-                                    color: 'white',
-                                },
-                                'input:focus': {
-                                    color: 'white',
-                                },
-                                '.number': {
-                                    'font-family': 'monospace'
-                                    // Custom web fonts are not supported. Only use system installed fonts.
-                                },
-                                '.invalid': {
-                                    color: '#FC8019'
-                                }
-                            }
-                        }
-                    }
-                }, function (err, instance) {
-                    button.addEventListener('click', function () {
-                        customerBtn.click().submit();
+                // const customerFields = document.querySelectorAll('input');
+                // let countValid = 1;
+                // customerFields.forEach(field => {
+                //     field.addEventListener('input', () => {
+                //         field.setCustomValidity('');
+                //         field.checkValidity();
+                //     })
+                //     field.addEventListener('invalid', () => {
+                //         field.setCustomValidity('This field is required');
 
-                        instance.requestPaymentMethod(function (err, payload) {
-                            button.setAttribute("disabled", true);
-                            button.innerHTML = 'Loading...';
-                            if (err) {
-                                button.removeAttribute("disabled");
-                                button.innerHTML = 'Submit payment';
-                            }
-                            const customer_name = document.querySelector('#customer_firstname').value;
-                            const customer_lastname = document.querySelector('#customer_lastname').value;
-                            const customer_email = document.querySelector('#customer_email').value;
-                            const customer_address = document.querySelector('#customer_address').value;
-                            const customer_tel = document.querySelector('#customer_tel').value;
+                //     })
+                // });
 
 
-                            const productsArray = JSON.parse(localStorage.getItem('cart'));
-                            let productsIdsQuantity = [];
-                            productsArray.forEach(element => {
-                                const prod = {
-                                    id: element.id,
-                                    q: element.quantity
-                                }
-                                // const jsonProd = JSON.stringify(prod);
-                                productsIdsQuantity.push({ ...prod });
-                            });
-                            // console.log(customerJson)
-                            axios.post(`${store.apiBaseUrl}/order/payment`,
-                                {
-                                    token: payload.nonce,
-                                    products: productsIdsQuantity,
-                                    customerData: {
-                                        customer_firstname: customer_name,
-                                        customer_lastname: customer_lastname,
-                                        customer_email: customer_email,
-                                        customer_address: customer_address,
-                                        customer_tel: customer_tel
+                button.addEventListener('click', () => {
+
+                    customerBtn.click();
+                    const customer_name = document.querySelector('#customer_firstname').value;
+                    const customer_lastname = document.querySelector('#customer_lastname').value;
+                    const customer_email = document.querySelector('#customer_email').value;
+                    const customer_address = document.querySelector('#customer_address').value;
+                    const customer_tel = document.querySelector('#customer_tel').value;
+                    if (customer_name && customer_lastname && customer_email && customer_address && customer_tel) {
+
+                        braintree.dropin.create({
+                            authorization: this.apiToken,
+                            selector: '#dropin-container',
+                            card: {
+                                overrides: {
+                                    styles: {
+                                        input: {
+                                            color: 'white',
+                                        },
+                                        'input:focus': {
+                                            color: 'white',
+                                        },
+                                        '.number': {
+                                            'font-family': 'monospace'
+                                            // Custom web fonts are not supported. Only use system installed fonts.
+                                        },
+                                        '.invalid': {
+                                            color: '#FC8019'
+                                        }
                                     }
                                 }
-                            ).then((res) => {
-                                button.setAttribute("disabled", true);
-                                button.innerHTML = 'Loading...';
-                                const message = document.querySelector('#payment-message');
-                                if (res.data.success) {
-                                    message.classList.add('alert', 'alert-success', 'mb-3', 'mt-3');
-                                    localStorage.clear();
-                                    store.cartVisbility = true;
-                                    setTimeout(() => { location.replace("/"); }, 1000);
+                            }
 
-                                } else {
-                                    message.classList.add('alert', 'alert-danger', 'mb-3', 'mt-3');
-                                }
-                                button.classList.add('d-none');
-                                message.innerHTML = res.data.message;
 
+                        }, function (err, instance) {
+                            button.addEventListener('click', function () {
+                                instance.requestPaymentMethod(function (err, payload) {
+                                    button.setAttribute("disabled", true);
+                                    button.innerHTML = 'Loading...';
+                                    if (err) {
+                                        button.removeAttribute("disabled");
+                                        button.innerHTML = 'Submit payment';
+                                    }
+                                    const customer_name = document.querySelector('#customer_firstname').value;
+                                    const customer_lastname = document.querySelector('#customer_lastname').value;
+                                    const customer_email = document.querySelector('#customer_email').value;
+                                    const customer_address = document.querySelector('#customer_address').value;
+                                    const customer_tel = document.querySelector('#customer_tel').value;
+                                    const productsArray = JSON.parse(localStorage.getItem('cart'));
+                                    let productsIdsQuantity = [];
+                                    productsArray.forEach(element => {
+                                        const prod = {
+                                            id: element.id,
+                                            q: element.quantity
+                                        }
+                                        // const jsonProd = JSON.stringify(prod);
+                                        productsIdsQuantity.push({ ...prod });
+                                    });
+                                    // console.log(customerJson)
+                                    axios.post(`${store.apiBaseUrl}/order/payment`,
+                                        {
+                                            token: payload.nonce,
+                                            products: productsIdsQuantity,
+                                            customerData: {
+                                                customer_firstname: customer_name,
+                                                customer_lastname: customer_lastname,
+                                                customer_email: customer_email,
+                                                customer_address: customer_address,
+                                                customer_tel: customer_tel
+                                            }
+                                        }
+                                    ).then((res) => {
+                                        button.setAttribute("disabled", true);
+                                        button.innerHTML = 'Loading...';
+                                        const message = document.querySelector('#payment-message');
+                                        if (res.data.success) {
+                                            message.classList.add('alert', 'alert-success', 'mb-3', 'mt-3');
+                                            localStorage.clear();
+                                            store.cartVisbility = true;
+                                            setTimeout(() => { location.replace("/"); }, 1000);
+                                        } else {
+                                            message.classList.add('alert', 'alert-danger', 'mb-3', 'mt-3');
+                                        }
+                                        button.classList.add('d-none');
+                                        message.innerHTML = res.data.message;
+                                    })
+                                });
                             })
-
                         });
-                    })
-                });
+                    }
+                })
+
+
+
+
+
 
             })
         },
