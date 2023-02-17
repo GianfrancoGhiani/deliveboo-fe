@@ -10,29 +10,24 @@
                 <form @submit.prevent id="form" class="card-body row row-cols-2 ">
                     <div class="col d-flex flex-column">
                         <label for="customer_firstname">Name</label>
-                        <input type="text" name="customer_firstname" id="customer_firstname" required
-                            oninvalid="this.setCustomValidity('This field is required')">
+                        <input type="text" name="customer_firstname" id="customer_firstname" required>
                     </div>
                     <div class="col d-flex flex-column">
                         <label for="customer_lastname">Surname</label>
-                        <input type="text" name="customer_lastname" id="customer_lastname" required
-                            oninvalid="this.setCustomValidity('This field is required')">
+                        <input type="text" name="customer_lastname" id="customer_lastname" required>
                     </div>
                     <div class="col d-flex flex-column">
                         <label for="customer_email">Email</label>
-                        <input type="email" name="customer_email" id="customer_email" required
-                            oninvalid="this.setCustomValidity('This field is required')">
+                        <input type="email" name="customer_email" id="customer_email" required>
                     </div>
                     <div class="col row row-cols-2">
                         <div class="col d-flex flex-column">
                             <label for="customer_address">Address</label>
-                            <input type="text" name="customer_address" id="customer_address" required
-                                oninvalid="this.setCustomValidity('This field is required')">
+                            <input type="text" name="customer_address" id="customer_address" required>
                         </div>
                         <div class="col d-flex flex-column">
                             <label for="customer_tel">Mobile Number</label>
-                            <input type="text" name="customer_tel" id="customer_tel" required
-                                oninvalid="this.setCustomValidity('This field is required')">
+                            <input type="text" name="customer_tel" id="customer_tel" required>
                         </div>
                     </div>
                     <button hidden id="customer-validator"></button>
@@ -51,7 +46,7 @@
 
 
 
-</div>
+    </div>
 </template>
 
 <script>
