@@ -2,7 +2,8 @@
   <nav class="navbar navbar-expand-lg navbar-light text-white bg-orange text-capitalize fixed-top">
     <div class="container sticky-top">
       <!-- logo -->
-      <a class="navbar-brand text-white" href="/">Deliveboo</a>
+      <img src="../../public/img/Deliveboo-logo-white.png" alt="">
+      <!--<a class="navbar-brand text-white" href="/">Deliveboo</a>-->
 
       <!-- bottone menu toggle schermo mobile -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
@@ -45,11 +46,6 @@ export default {
           id: 1,
         },
         {
-          url: '/about',
-          info: 'about',
-          id: 2,
-        },
-        {
           url: '/contacts',
           info: 'contacts',
           id: 3,
@@ -57,7 +53,12 @@ export default {
         {
           url: '/app-download',
           info: 'app',
-          id: 3,
+          id: 2,
+        },
+        {
+          url: '/about',
+          info: 'about',
+          id: 4,
         },
       ]
     }
@@ -71,5 +72,9 @@ export default {
 .sticky-top {
   position: sticky;
   top: 0;
+}
+
+img{
+  max-width: 150px;
 }
 </style>

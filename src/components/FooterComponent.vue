@@ -42,12 +42,14 @@
         <!-- Grid column -->
         <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
           <!-- Content -->
-          <h6 class="text-uppercase fw-bold mb-4 text-white">
+          <img src="../../public/img/Deliveboo-logo-white.png" alt="">
+
+          <!--<h6 class="text-uppercase fw-bold mb-4 text-white">
             <i class="fas fa-gem me-3 "></i>Deliveboo
-          </h6>
+          </h6>-->
           <p class="text-white">
-            Here you can use rows and columns to organize your footer content. Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit.
+            We're an amazing app for food delivery based in New York City.
+            Eat healthy at home.
           </p>
         </div>
         <!-- Grid column -->
@@ -152,5 +154,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+img{
+  max-width: 150px;
+}
 </style>
