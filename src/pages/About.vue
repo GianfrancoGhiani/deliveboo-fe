@@ -49,34 +49,31 @@
                 </div>
             </div>
         </section>
-    </div> -->
-
+</div> -->
     <h1 class="text-center">About Us</h1>
 
-        <div class="container">
-            <div class="card" v-for="(member, i) in team" :key="i">
-                <img :src="member.image" :alt="member.name" class="card__image">
-                <p class="card__name">{{ member.name }}</p>
-                <div class="grid-container text-center">
+    <div class="container">
+        <div class="card" v-for="(member, i) in team" :key="i">
+            <img :src="member.image" :alt="member.name" class="card__image">
+            <p class="card__name">{{ member.name }}</p>
+            <div class="grid-container text-center">
 
-                    <div class="grid-child-posts text-center">
-                        {{ member.qualification }}
-                    </div>
+                <div class="grid-child-posts text-center">
+                    {{ member.qualification }}
+                </div>
 
-                </div>
-                <ul class="social-icons">
-                    <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
-                    <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
-                </ul>
-                <div class="description text-center">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex officiis natus ut aspernatur, dicta quaerat
-                    sequi quibusdam reiciendis, porro iure repudiandae quod omnis deleniti necessitatibus. Laudantium rem
-                    dignissimos.
-                </div>
             </div>
-    </div>
+            <ul class="social-icons">
+                <li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-telegram"></i></a></li>
+                <li><a href="#"><i class="fa-brands fa-github"></i></a></li>
+            </ul>
+            <div class="description text-center">
+              {{ member.description }}
+            </div>
+        </div>
+</div>
 </template>
 
 <script>
@@ -88,28 +85,28 @@ export default {
                 {
                     name: 'Simone',
                     image: 'https://ca.slack-edge.com/T91QPE3BP-U03UYJJFYAE-bfa2acc254ac-512',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempora enim pariatur saepe illo impedit?',
+                    description: '"Ciao, sono un full stack web developer con un occhio di riguardo per l esperienza utente e una forte attenzione al dettaglio. Ho una vasta esperienza nella creazione di siti web altamente performanti e scalabili, grazie alla mia conoscenza di diverse tecnologie e framework."',
                     qualification: 'Full Stack Developer',
                     github: 'https://github.com/BarrioTropical',
                 },
                 {
                     name: 'Mattia',
                     image: 'https://avatars.githubusercontent.com/u/54687718?v=4',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempora enim pariatur saepe illo impedit?',
+                    description: '"Sono un full stack web developer appassionato alla creazione di prodotti digitali user-friendly e accessibili a tutti. Grazie alla mia competenza nell implementazione di tecnologie all avanguardia. Sono sempre alla ricerca di nuove sfide e di nuove opportunità per ampliare le mie conoscenze ."',
                     qualification: 'Full Stack Developer',
                     github: 'https://github.com/Mattia-rollo',
                 },
                 {
                     name: 'Riccardo',
                     image: 'https://avatars.githubusercontent.com/u/64532705?v=4',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempora enim pariatur saepe illo impedit?',
+                    description: '"Ciao, sono un full stack web developer che crede fermamente nella tecnologia. Grazie alle mia passione per lo sviluppo web, ho la capacità di creare prodotti digitali funzionali, accessibili e sicuri. Sono sempre alla ricerca di nuovi modi per migliorare l esperienza utente e offrire soluzioni tecnologiche innovative."',
                     qualification: 'Full Stack Developer',
                     github: 'https://github.com/RiccardoPellegrino',
                 },
                 {
                     name: 'Gianfranco',
                     image: 'https://avatars.githubusercontent.com/u/108810086?v=4',
-                    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, tempora enim pariatur saepe illo impedit?',
+                    description: '"Eccomi, sono un full stack web developer pronto a creare soluzioni digitali su misura per le tue esigenze. Sia che si tratti di front-end o back-end, sono sempre pronto ad affrontare nuove sfide e a portare le tue idee dal concetto alla realtà, attraverso la mia competenza tecnica e la mia passione per lo sviluppo web."',
                     qualification: 'Full Stack Developer',
                     github: 'https://github.com/gianfrancoghiani',
                 },
@@ -452,6 +449,7 @@ export default {
     grid-gap: 20px;
     font-size: 1.2em;
 }
+
 .text-center {
     color: #EBB825;
 }
@@ -493,48 +491,49 @@ export default {
 
 @media screen and (max-width:768px) {
     .container {
-    display: grid;
-    grid-template-columns: 300px;
-    grid-gap: 50px;
-    justify-content: center;
-    align-items: center;
-    background-color: #0F0F0F;
-    font-family: 'Baloo Paaji 2', cursive;
-}
+        display: grid;
+        grid-template-columns: 300px;
+        grid-gap: 50px;
+        justify-content: center;
+        align-items: center;
+        background-color: #0F0F0F;
+        font-family: 'Baloo Paaji 2', cursive;
+    }
 }
 
 @media screen and (min-width:769px) and (max-width:999px) {
     .container {
-    display: grid;
-    grid-template-columns: 300px 300px;
-    grid-gap: 50px;
-    justify-content: center;
-    align-items: center;
-    background-color: #0F0F0F;
-    font-family: 'Baloo Paaji 2', cursive;
-}
+        display: grid;
+        grid-template-columns: 300px 300px;
+        grid-gap: 50px;
+        justify-content: center;
+        align-items: center;
+        background-color: #0F0F0F;
+        font-family: 'Baloo Paaji 2', cursive;
+    }
 }
 
 @media screen and (min-width:1000px) and (max-width:1300px) {
     .container {
-    display: grid;
-    grid-template-columns: 300px 300px;
-    grid-gap: 50px;
-    justify-content: center;
-    align-items: center;
-    background-color: #0F0F0F;
-    font-family: 'Baloo Paaji 2', cursive;
+        display: grid;
+        grid-template-columns: 300px 300px;
+        grid-gap: 50px;
+        justify-content: center;
+        align-items: center;
+        background-color: #0F0F0F;
+        font-family: 'Baloo Paaji 2', cursive;
+    }
 }
-}
+
 @media screen and (min-width:1301px) {
     .container {
-    display: grid;
-    grid-template-columns: 300px 300px 300px 300px;
-    grid-gap: 50px;
-    justify-content: center;
-    align-items: center;
-    background-color: #0F0F0F;
-    font-family: 'Baloo Paaji 2', cursive;
-}
+        display: grid;
+        grid-template-columns: 300px 300px 300px 300px;
+        grid-gap: 50px;
+        justify-content: center;
+        align-items: center;
+        background-color: #0F0F0F;
+        font-family: 'Baloo Paaji 2', cursive;
+    }
 }
 </style>
