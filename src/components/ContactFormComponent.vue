@@ -5,8 +5,9 @@
 
 
                 <div class="d-flex flex-column align-items-center">
-                    <h1 class="text-uppercase text-white fw-bold m-5">contact us</h1>
-                    <h4>Questions? Contact now our support team and we'll answer you as soon as possible</h4>
+                    <h1 class="text-uppercase text-white fw-bold m-5 mycontact">contact us</h1>
+                    <h4 class="question">Questions? Contact now our support team and we'll answer you as soon as possible
+                    </h4>
                     <div v-if="success" class="alert alert-success text-start" role="alert">
                         The message has been successfully sent!
                     </div>
@@ -40,7 +41,7 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-center mt-5 mb-3">
-                                <button class="mail text-white w-25 " type="submit" :disabled="loading">{{
+                                <button class="mail text-white w-25" type="submit" :disabled="loading">{{
                                     loading ?
                                     'Sending...' : 'Send'
                                 }}</button>
@@ -50,9 +51,29 @@
                 </div>
             </div>
         </div>
+        <div class="container-sm text-center d-flex justify-content-between my-5">
+            <!-- Links -->
+            <div>
+                <h3 class="text-uppercase fw-bold mb-4"><i class="fas fa-home me-3"></i>Contact</h3>
+                <span> New York, NY 10012, US</span>
+            </div>
+            <div>
+                <h3 class="text-uppercase fw-bold mb-4"> <i class="fas fa-envelope me-3"></i> Mail</h3>
+                <span>
+                    info@deliveboo.com
+                </span>
+            </div>
+            <div>
+                <h3 class="text-uppercase fw-bold mb-4"><i class="fas fa-phone me-3"></i>Phone </h3>
+
+                <span>+ 01 234 567 88</span>
+            </div>
+
+
+        </div>
         <div class="text-center col-lg-12 p-4">
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d358195.89843116904!2d8.5754299!3d45.4616357!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c22ab05c3bbf%3A0xa481aa5be8d54a11!2sBoolean%20SRLS!5e0!3m2!1sit!2sit!4v1674663934196!5m2!1sit!2sit"
+                src="https://maps.google.com/maps?q=New%20York,%2010012,%20Stati%20Uniti&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 class="w-100" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
@@ -123,9 +144,36 @@ export default {
     width: 80px;
 }
 
+.mycontact {
+    color: $orange !important;
+}
+
+.question {
+    color: #EBB825;
+}
+
+.form-control {
+    border-color: $orange !important;
+}
+
+p {
+    font-size: 50px !important;
+}
+
+h3{
+    color: $orange;
+}
+span{
+    font-size: 30px;
+}
 .mail {
     background-color: transparent;
-    border: 1px solid white;
+
+    &:hover {
+        background-color: $orange;
+    }
+
+    border: 1px solid $orange;
     border-radius: 16px;
     padding: 5px;
     transition: 0.3s;
