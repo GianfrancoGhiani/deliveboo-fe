@@ -93,20 +93,6 @@ export default {
 
                 var button = document.querySelector('#submit-button');
                 var customerBtn = document.querySelector('#customer-validator');
-                // const customerFields = document.querySelectorAll('input');
-                // let countValid = 1;
-                // customerFields.forEach(field => {
-                //     field.addEventListener('input', () => {
-                //         field.setCustomValidity('');
-                //         field.checkValidity();
-                //     })
-                //     field.addEventListener('invalid', () => {
-                //         field.setCustomValidity('This field is required');
-
-                //     })
-                // });
-
-
                 button.addEventListener('click', () => {
 
                     customerBtn.click();
