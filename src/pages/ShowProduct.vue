@@ -54,7 +54,6 @@ export default {
         border-radius: 0.5rem 0.5rem;
         width: 100%;
         object-fit: cover;
-        max-height: max(10rem, 30vh);
         mix-blend-mode: var(--card-blend-mode);
 
     }
@@ -73,7 +72,6 @@ body {
     display: grid;
     place-content: center;
     justify-items: center;
-    min-height: 100vh;
     margin: 0;
     padding: 1rem;
     line-height: 1.5;
