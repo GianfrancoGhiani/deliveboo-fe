@@ -49,7 +49,6 @@
           </h6>-->
           <p class="text-white">
             We're an amazing app for food delivery based in New York City.
-            Eat healthy at home.
           </p>
         </div>
         <!-- Grid column -->
