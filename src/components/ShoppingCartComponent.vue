@@ -87,6 +87,9 @@ export default {
     removeFromCart(index) {
       store.cartData.splice(index, 1);
       localStorage.setItem(`cart`, JSON.stringify(store.cartData));
+      if (!store.cartData.length) {
+        store.restaurant = ''
+      }
     },
     checkOut() {
       this.$router.push({ path: '/payment' })

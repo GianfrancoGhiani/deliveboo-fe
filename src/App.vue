@@ -17,7 +17,7 @@
     <ShoppingCartComponent v-if="store.openCart" />
   </Transition>
 
-<FooterComponent />
+  <FooterComponent />
 </template>
 
 <script>
@@ -50,7 +50,7 @@ export default {
     const cartData = localStorage.getItem('cart');
     store.cartData = cartData ? JSON.parse(cartData) : [];
     console.log(store.cartData)
-    store.infoRestaurant();
+    // store.infoRestaurant();
   }
 }
 </script>
