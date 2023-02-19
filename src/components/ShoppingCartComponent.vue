@@ -119,9 +119,10 @@ export default {
 
   },
   mounted() {
-    console.log(this.restaurantId);
+    // console.log(this.restaurantId);
     // console.log(this.restaurant);
     // this.setRestaurantId();
+    store.infoRestaurant();
   }
 };
 </script>
