@@ -1,14 +1,15 @@
 <template>
-    <div class="m-auto">
-        <div style="width: 100%; height: 0%; padding-bottom: 56%; position: relative">
-            <iframe src="https://giphy.com/embed/g01ZnwAUvutuK8GIQn" width="100%" height="100%"
-                style="position: absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+    <div class="d-flex justify-content-center">
+        <div id="mainC" class="w-auto p-5">
+            <div class="message">
+                <h1>404</h1>
+                <h3>The page does not exist</h3>
+            </div>
+            <div class="footer" @click="this.$router.push({ path: '/' })">
+                <a title="home" target="_blank">Home<span></span></a>
+            </div>
         </div>
-        <p>
-            <a href="https://giphy.com/gifs/high-quality-highqualitygifs-g01ZnwAUvutuK8GIQn"></a>
-        </p>
     </div>
-
 </template>
 
 <script>
@@ -18,5 +19,119 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@use './../assets/styles/partials/variables' as *;
 
+#mainC {
+
+    color: $white-text;
+    font-family: sans-serif;
+    max-width: 340px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+
+    .message {
+        font-size: 16px;
+        text-align: center;
+
+        h1 {
+            margin: 0;
+            padding: 0;
+            font-size: 11em;
+            transform: skewY(-5deg);
+            transition: 0.4s ease-in-out all;
+
+            &:hover {
+                text-shadow: 20px 20px 0 fade($orange, 10%);
+            }
+
+            @media (max-width: 300px) {
+                font-size: 50vw;
+            }
+        }
+
+        h3 {
+            color: $orange;
+            font-size: 0.9em;
+            font-weight: lighter;
+            line-height: 1;
+
+            @media (max-width: 300px) {
+                font-size: 5vw;
+            }
+        }
+    }
+
+    .footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        width: 100%;
+
+        a {
+            position: relative;
+            flex: 1;
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            border-radius: 3px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            margin: 0 20px;
+            text-align: center;
+            padding: 10px 0;
+            overflow: hidden;
+            transition: all 0.2s ease-in-out;
+            z-index: 3;
+
+            @media (max-width: 300px) {
+                flex: 5 100%;
+                width: 100%;
+            }
+
+            &:hover {
+                border: 1px solid rgba(255, 255, 255, 1);
+                color: #121212;
+
+                span {
+                    width: 310px;
+                    height: 310px;
+                }
+            }
+
+            span {
+                content: '';
+                position: absolute;
+                background: $orange;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                transition: all 0.5s ease;
+                z-index: -1;
+
+                @media (max-width: 300px) {
+                    transition: all 0.2s ease-in;
+                }
+
+                &:active {
+                    background: lighten($orange, 10%);
+                }
+            }
+        }
+
+        .legal {
+            text-align: center;
+            flex: 3;
+            color: fade(#ccc, 50%);
+
+            @media (max-width: 300px) {
+                font-size: 4vw;
+                flex: 5 100%;
+                padding: 5px 10px;
+            }
+        }
+    }
+}
 </style>
