@@ -6,8 +6,6 @@
     <a href="#" class="btn btn-primary">Order it</a>
   </div>
 </div>  -->
-
-
   <div class="containter-sm col-12 col-xl-3 col-lg-4 col-md-6 col-sm-12">
     <div class="card cardMenu border-warning mt-4 p-2">
 
@@ -18,12 +16,17 @@
       <div class="card-body">
         <h5 class="card-title text-capitalize">{{ truncateContent(product.name) }}</h5>
         <p class="card-text text-capitalize mt-3">{{ product.ingredients }}</p>
-        <p class="prezzo">${{ product.price }}</p>
+        <p class="prezzo mt-2"><span :class="{ 'text-decoration-line-through': (product.discount != 0) }">$ {{
+          product.price }}</span> <span v-if="product.discount != 0"> -{{ product.discount }}% <br> <span
+              class="text-white">$ {{ (product.price
+                -
+                ((product.price /
+                  100) * product.discount)).toFixed(2) }}</span></span></p>
       </div>
 
       <a class="btn mybtn" @click="addtoCart()"><b>Add to Cart</b> </a>
     </div>
-</div>
+  </div>
 </template>
 
 <script>
@@ -214,7 +217,8 @@ h5 {
   top: 8px;
   left: 10px;
   color: $orange;
-  background-color: rgba(0, 0, 0, 0.445);
+  font-size: 1.2rem;
+  background-color: rgba(0, 0, 0, 0.8);
   font-weight: 600;
   border-radius: 8px;
   padding: 0 5px;

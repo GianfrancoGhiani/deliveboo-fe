@@ -23,7 +23,7 @@
               <p class="animate-text text-capitalize"> Opening: {{ restaurant.opening_time }}</p>
               <p class="animate-text text-capitalize"> Closing: {{ restaurant.closing_time }}</p>
               <div class="animate-text text-capitalize mt-5">
-              Type:
+                Type:
                 <p v-for="(type, index) in restaurant.types" class="animate-text text-capitalize">{{ type.name }}</p>
               </div>
             </div>
@@ -32,7 +32,7 @@
         </div>
       </router-link>
     </div>
-</div>
+  </div>
 </template>
 
 
@@ -82,6 +82,10 @@ body {
   color: white;
   font-family: 'Roboto';
   border-radius: 5px;
+
+  img {
+    object-fit: cover;
+  }
 
 
 }

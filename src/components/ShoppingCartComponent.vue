@@ -29,7 +29,7 @@
               <h5 class="colorName text-capitalize">{{ cartItem.name }}</h5>
 
               <!-- prezzo prodotto -->
-              <p><span :class="{ 'text-decoration-line-through': (cartItem.discount != 0) }">$ {{
+              <p><span span v-if="cartItem.discount == 0">$ {{
                 cartItem.price }}</span> <span v-if="cartItem.discount != 0"> $ {{ (cartItem.price - ((cartItem.price /
     100) * cartItem.discount)).toFixed(2) }}</span></p>
 
@@ -69,7 +69,7 @@
         v-if="store.cartVisibility">Clear All</button>
 
     </div>
-</div>
+  </div>
 </template>
 
 <script>

@@ -26,7 +26,6 @@
             </nav>
         </div>
     </div>
-
 </template>
 
 <script>
@@ -71,6 +70,10 @@ export default {
 
 <style lang="scss" scoped>
 @use './../assets/styles/partials/variables' as *;
+
+.pagination {
+    cursor: pointer
+}
 
 h1 {
     color: $orange;
